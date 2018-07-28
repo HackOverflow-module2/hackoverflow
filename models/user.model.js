@@ -1,11 +1,39 @@
 const mongoose = require('mongoose');
 const bcrypt = require('bcrypt');
+const constants = require('../constants')
 const SALT_WORK_FACTOR = 10;
 
 const userSchema = new mongoose.Schema({
     name: {
       type: String,
       required: 'Name is required'
+    },
+    surname: {
+      type: String,
+      required: 'Surname is required'
+    },
+    nickname: {
+      type: String,
+      unique: true,
+      required: 'Please enter a nickname'
+    },
+    photoName: {
+      type: String
+    },
+    photoPath: {
+      type: String,
+      default: "https://www.ienglishstatus.com/wp-content/uploads/2018/04/Sad-Profile-Pic-for-Whatsapp.png"
+    },
+    description: {
+      type: String
+    },
+    tags: [{
+      type: String
+    }],
+    role: {
+      type: String,
+      enum: [constants.ROLE_ADMIN, constants.ROLE_GUEST],
+      default: constants.ROLE_GUEST
     },
     email: {
       type: String,

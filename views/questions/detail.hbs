@@ -7,4 +7,12 @@
       <p>{{ question.description }} </p>
     </blockquote>
   </div>
+
+  {{> answer/create }}
+
+  {{#each answers}}
+
+    {{> answer/list this}}
+
+  {{/each}}
 </div>

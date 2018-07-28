@@ -14,6 +14,30 @@
 
     <div class="input-group mb-2">
       <div class="input-group-prepend">
+        <span class="input-group-text"> <i class="fas fa-user"></i> </span>
+      </div>
+      <input type="text" class="form-control {{#if errors.surname }}is-invalid{{/if}}" name="surname" placeholder="Last name" value="{{ user.surname }}"/>
+      {{#if errors.surname }}
+        <div class="invalid-feedback">
+          {{ errors.surname }}
+        </div>
+      {{/if}}
+    </div>
+
+    <div class="input-group mb-2">
+      <div class="input-group-prepend">
+        <span class="input-group-text"> <i class="fas fa-user"></i> </span>
+      </div>
+      <input type="text" class="form-control {{#if errors.nickname }}is-invalid{{/if}}" name="nickname" placeholder="nickname" value="{{ user.nickname }}"/>
+      {{#if errors.nickname }}
+        <div class="invalid-feedback">
+          {{ errors.nickname }}
+        </div>
+      {{/if}}
+    </div>
+
+    <div class="input-group mb-2">
+      <div class="input-group-prepend">
         <span class="input-group-text"> <i class="fas fa-envelope"></i> </span>
       </div>
       <input type="email" class="form-control {{#if errors.email }}is-invalid{{/if}}" name="email" placeholder="user@exaple.org" value="{{ user.email }}"/>
@@ -35,9 +59,9 @@
         </div>
       {{/if}}
     </div>
-    
-    <div class="form-actions">
-      <button class="btn btn-primary btn-block" type="submit" >Sign in</button>
+
+    <div class="form-actions col-auto">
+      <button class="btn btn-primary mb-2" type="submit" >Sign in</button>
     </div>
 
   </form>

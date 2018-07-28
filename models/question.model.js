@@ -1,5 +1,7 @@
 const mongoose = require('mongoose');
 
+const options = {discriminatorKey: "kind"};
+
 const questionSchema = new mongoose.Schema({
     title: {
         type: String,
@@ -13,8 +15,11 @@ const questionSchema = new mongoose.Schema({
         type: mongoose.Schema.Types.ObjectId,
         ref: 'User',
         required: true
-    } 
-}, { timestamps: true });
+    },
+    tags: [{
+        type: String
+    }]
+}, { timestamps: true }, options);
 
 const Question = mongoose.model('questions', questionSchema);
 module.exports = Question;
