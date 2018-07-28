@@ -7,16 +7,17 @@ module.exports.doCreate = (req, res, next) => {
     const id = req.params.id;
 
     Question.findById(id)
+
         .then(question => {
             if(question) {
                 const answer = new Answer({
                     description: req.body.description,
-                    question: id
+                    question: id,
+                    
                 })
                return answer.save()
                     .then(answer => {
                         res.redirect(`/questions/${id}`)
-                        //res.render('questions/detail', {question: question, answer: answer})
                     })
             } else {
                 next(createError(404, `Question with id ${id} not found`));                

@@ -35,14 +35,14 @@ module.exports.detail = (req, res, next) => {
     const id = req.params.id;
 
     Question.findById(id)
-
+    .populate('user')
         .then(question => {
             if (question) {
                 return Answer.find({question: id})
                     .then(answers => {
                         res.render('questions/detail', {
                             question,
-                            answers
+                            answers,
                         });
                     })
             } else {
