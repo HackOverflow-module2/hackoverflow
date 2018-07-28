@@ -10,6 +10,9 @@
 
   {{> answer/create }}
 
-  {{> answer/list }}
+  {{#each answers}}
 
+    {{> answer/list this}}
+
+  {{/each}}
 </div>

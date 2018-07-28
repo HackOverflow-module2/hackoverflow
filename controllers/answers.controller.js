@@ -16,6 +16,7 @@ module.exports.doCreate = (req, res, next) => {
                return answer.save()
                     .then(answer => {
                         res.redirect(`/questions/${id}`)
+                        //res.render('questions/detail', {question: question, answer: answer})
                     })
             } else {
                 next(createError(404, `Question with id ${id} not found`));                
