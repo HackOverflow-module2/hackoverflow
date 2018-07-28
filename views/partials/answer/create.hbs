@@ -1,0 +1,14 @@
+<div class="row">
+    <div class="col-sm-6">
+        <form
+        action='/answer/{{question.id}}'
+        method="post">
+
+        <div class="form-group">
+            <textarea class="form-control" name="description" id="description" rows="6">{{ answer.description}}</textarea>
+        </div>
+
+        <button type="submit" class="btn btn-success">Answer</button>
+        </form>
+    </div>
+</div>
