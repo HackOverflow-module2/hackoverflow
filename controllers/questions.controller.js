@@ -29,3 +29,25 @@ module.exports.doCreate = (req, res, next) => {
             }
         })
 }
+
+module.exports.detail = (req, res, next) => {
+    const id = req.params.id;
+
+    Question.findById(id)
+      .then(question => {
+        if (question) {
+          res.render('questions/detail', {
+            question,
+          });
+        } else {
+          next(createError(404, `Question with id ${id} not found`));
+        }
+    })
+    .catch(error => {
+      if (error instanceof mongoose.Error.CastError) {
+        next(createError(404, `Question with id ${id} not found`));
+      } else {
+        next(error);
+      }
+    });
+}
