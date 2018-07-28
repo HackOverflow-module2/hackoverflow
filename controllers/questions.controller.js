@@ -34,11 +34,14 @@ module.exports.doCreate = (req, res, next) => {
 module.exports.detail = (req, res, next) => {
     const id = req.params.id;
 
+    // TODO; refactor with Promise.all
+
     Question.findById(id)
-    .populate('user')
+        .populate('user')
         .then(question => {
             if (question) {
                 return Answer.find({question: id})
+                    .populate('user')
                     .then(answers => {
                         res.render('questions/detail', {
                             question,
@@ -56,4 +59,15 @@ module.exports.detail = (req, res, next) => {
                 next(error);
             }
         });
+}
+
+module.exports.list = (req, res, next) => {
+    Question.find()
+        .populate('user')
+        .then(questions => {
+            res.render('questions/list', {
+                questions
+            })
+        })
+        .catch(error => next(error))
 }

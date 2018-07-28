@@ -13,7 +13,7 @@ module.exports.doCreate = (req, res, next) => {
                 const answer = new Answer({
                     description: req.body.description,
                     question: id,
-                    
+                    user: req.user._id
                 })
                return answer.save()
                     .then(answer => {

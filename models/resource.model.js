@@ -1,8 +1,23 @@
 const mongoose = require('mongoose');
-const Question = require('./question.model');
 
-const options = {discriminatorKey: "kind"};
+const resourceSchema = new mongoose.Schema({
+    title: {
+        type: String,
+        required: 'Title is required',
+        maxlength: 150
+    },
+    description: {
+        type: String,
+    },
+    user: {
+        type: mongoose.Schema.Types.ObjectId,
+        ref: 'User',
+        required: true
+    },
+    tags: [{
+        type: String
+    }]
+}, { timestamps: true, discriminatorKey: 'kind' });
 
-const Resource = Question.discriminator('Resource',
-    new mongoose.Schema({}, options)
-)
+const Resource = mongoose.model('Resource', resourceSchema);
+module.exports = Resource;
