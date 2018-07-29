@@ -16,7 +16,11 @@ const postSchema = new mongoose.Schema({
     },
     tags: [{
         type: String
-    }]
+    }],
+    rating: {
+        type: Number,
+        default: 0
+    }
 }, { timestamps: true, discriminatorKey: 'kind' });
 
 const Post = mongoose.model('Post', postSchema);

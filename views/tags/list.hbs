@@ -1,0 +1,14 @@
+<div class="row">
+    {{#each tags}}
+    <div class="col col-4">
+        <div class="card" style="width: 18rem;">
+        <img class="card-img-top" src="https://increasify.com.au/wp-content/uploads/2016/08/default-image.png" alt="Logo">
+            <div class="card-body">
+                <h5 class="card-title">{{this.title}}</h5>
+                <p class="card-text">{{this.description}}</p>
+                <a href="/tags/{{this.id}}" class="btn btn-primary">Explore</a>
+            </div>
+        </div>
+    </div>
+    {{/each}}
+</div>
