@@ -6,3 +6,11 @@ body {
 a {
   color: #00B7FF;
 }
+
+.wrap {
+  margin: 30px 0;
+}
+
+.inner-wrap {
+  margin: 15px;
+}

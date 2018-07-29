@@ -1,0 +1,15 @@
+{{#each questions}}
+    
+<div class="card">
+  <div class="card-header">
+    <a href="/questions/{{this.id}}">{{this.title}}</a>
+       <i class="fas fa-heart like">&nbsp;&nbsp;<span class="rating">{{this.rating}}</span></i>
+  </div>
+  <div class="card-body">
+    <h5 class="card-title">{{this.description}}</h5>
+    <p class="card-text">{{this.user.name}}</p>
+    <a href="/questions/{{this.id}}" class="btn btn-primary">Answer</a>
+  </div>
+</div>
+
+{{/each}}

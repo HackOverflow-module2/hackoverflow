@@ -1,8 +1,8 @@
 const mongoose = require('mongoose');
-const Question = require('./question.model');
+const Post = require('./post.model');
 
-const options = {discriminatorKey: "kind"};
+const resourceSchema = new mongoose.Schema({
+}, { timestamps: true, discriminatorKey: 'kind' });
 
-const Resource = Question.discriminator('Resource',
-    new mongoose.Schema({}, options)
-)
+const Resource = Post.discriminator('Resource', resourceSchema);
+module.exports = Resource;
