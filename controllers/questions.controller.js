@@ -33,41 +33,18 @@ module.exports.doCreate = (req, res, next) => {
 
 module.exports.detail = (req, res, next) => {
     const id = req.params.id;
+    const questionPromise = Question.findById(id).populate('user');
+    const answersPromise = Answer.find({question: id}).populate('user');
 
-    // TODO; refactor with Promise.all
-
-    Question.findById(id)
-        .populate('user')
-        .then(question => {
-            if (question) {
-                return Answer.find({question: id})
-                    .populate('user')
-                    .then(answers => {
-                        res.render('questions/detail', {
-                            question,
-                            answers,
-                        });
-                    })
-            } else {
-                next(createError(404, `Question with id ${id} not found`));
-            }
-        })
-        .catch(error => {
-            if (error instanceof mongoose.Error.CastError) {
-                next(createError(404, `Question with id ${id} not found`));
-            } else {
-                next(error);
-            }
-        });
-}
-
-module.exports.list = (req, res, next) => {
-    Question.find()
-        .populate('user')
-        .then(questions => {
-            res.render('questions/list', {
-                questions
+    Promise.all([questionPromise, answersPromise])
+    .then(([question, answers]) => {
+        if(question) {
+            res.render('questions/detail', {
+                question,
+                answers
             })
-        })
-        .catch(error => next(error))
+        } 
+    })
+    .catch(error => next(error))
 }
+
