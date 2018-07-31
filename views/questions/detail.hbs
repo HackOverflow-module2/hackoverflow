@@ -7,6 +7,9 @@
       <p>{{ question.description }} </p>
     </blockquote>
     <p>- {{ question.user.name }} </p>
+    {{#each question.tags}}
+        <span class="badge badge-success">{{this}}</span>
+    {{/each}}
   </div>
 
   {{> answer/create }}
