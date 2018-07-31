@@ -7,5 +7,8 @@
       <p>{{ resource.description }} </p>
     </blockquote>
     <p>- {{ resource.user.name }} </p>
+    {{#each resource.tags}}
+        <span class="badge badge-success">{{this}}</span>
+    {{/each}}
   </div>
 </div>

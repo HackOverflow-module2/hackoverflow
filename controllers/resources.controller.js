@@ -1,9 +1,16 @@
 const mongoose = require('mongoose');
 const Resource = require('../models/resource.model');
 const User = require('../models/user.model');
+const Tag = require('../models/tag.model');
 
 module.exports.create = (req, res, next) => {
-    res.render('resources/create');
+    Tag.find()
+    .then(tags => {
+        res.render('resources/create', {
+            tags
+        });
+    })
+    .catch(error => next(error))
 }
 
 module.exports.doCreate = (req, res, next) => {
@@ -11,7 +18,8 @@ module.exports.doCreate = (req, res, next) => {
     const resource = new Resource({
         title: req.body.title,
         description: req.body.description,
-        user: req.user._id
+        user: req.user._id,
+        tags: req.body.tags
     });
     resource.save()
         .then((resource) => {
