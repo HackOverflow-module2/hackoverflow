@@ -8,11 +8,13 @@ module.exports.list = (req, res, next) => {
     const questionPromise = Question.find()
     const resourcePromise =  Resource.find()
     Promise.all([questionPromise, resourcePromise])
-        .then((posts) => {
+        .then(([questions, resources]) => {
             res.render('posts/list', {
-                questions: posts[0],
-                resources: posts[1]
+                questions,
+                resources
             })
         })
         .catch(error => next(error))
 }
+
+

@@ -13,6 +13,15 @@
         <div class="form-group">
             <textarea class="form-control" name="description" id="description" rows="6">{{ question.description}}</textarea>
         </div>
+        
+        <div class="form-group">
+            <label for="tagsSelect">Tags</label>
+            <select multiple class="form-control" id="tags" name="tags">
+            {{#each tags}}
+                <option value="{{this.name}}">{{this.name}}</option>
+            {{/each}}
+            </select>
+        </div>
 
         <button type="submit" class="btn btn-success">Create</button>
         </form>
