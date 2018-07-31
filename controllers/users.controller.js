@@ -33,3 +33,10 @@ module.exports.doCreate = (req, res, next) => {
       }
     })
 }
+
+module.exports.detail = (req, res, next) => {
+  const user = req.user._id
+  User.findById(user)
+    .then()
+    .catch()
+}

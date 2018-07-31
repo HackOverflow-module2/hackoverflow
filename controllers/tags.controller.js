@@ -30,10 +30,10 @@ module.exports.detail = (req, res, next) => {
                         })
                     })
             } else {
-
+                next(createError(404, 'tag not found'));
             }
         })
-        .catch()
+        .catch(error => next(error))
     
 
 }
