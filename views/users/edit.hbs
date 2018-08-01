@@ -1,1 +1,67 @@
-hola
+<div class="row mt-5">
+  <form action="/users/{{user._id}}/edit" method="post" class="col-4 mx-auto" enctype="multipart/form-data">
+
+    <div class="">
+  
+        <img src="{{user.photoPath}}" alt="">
+        <input type="file"
+               id="photo" name="photo"
+               accept="image/png, image/jpeg" />
+    </div>
+
+    <div class="input-group mb-2">
+
+      <input type="text" class="form-control {{#if errors.name }}is-invalid{{/if}}" name="name" placeholder="Name" value="{{ user.name }}"/>
+      {{#if errors.name }}
+        <div class="invalid-feedback">
+          {{ errors.name }}
+        </div>
+      {{/if}}
+    </div>
+
+    <div class="input-group mb-2">
+
+      <input type="text" class="form-control {{#if errors.surname }}is-invalid{{/if}}" name="surname" placeholder="Last name" value="{{ user.surname }}"/>
+      {{#if errors.surname }}
+        <div class="invalid-feedback">
+          {{ errors.surname }}
+        </div>
+      {{/if}}
+    </div>
+
+    <div class="input-group mb-2">
+
+      <input type="text" class="form-control {{#if errors.nickname }}is-invalid{{/if}}" name="nickname" placeholder="nickname" value="{{ user.nickname }}"/>
+      {{#if errors.nickname }}
+        <div class="invalid-feedback">
+          {{ errors.nickname }}
+        </div>
+      {{/if}}
+    </div>
+
+    <div class="input-group mb-2">
+
+      <input type="email" class="form-control {{#if errors.email }}is-invalid{{/if}}" name="email" placeholder="user@exaple.org" value="{{ user.email }}"/>
+      {{#if errors.email }}
+        <div class="invalid-feedback">
+          {{ errors.email }}
+        </div>
+      {{/if}}
+    </div>
+
+    <div class="input-group mb-2">
+  
+      <input type="password" class="form-control {{#if errors.password }}is-invalid{{/if}}" name="password" placeholder="Password"/>
+      {{#if errors.password }}
+        <div class="invalid-feedback">
+          {{ errors.password }}
+        </div>
+      {{/if}}
+    </div>
+    
+    <div class="form-actions col-auto">
+      <button class="btn btn-primary mb-2" type="submit" >Update profile</button>
+    </div>
+    <hr>
+  </form>
+</div>
