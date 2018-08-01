@@ -1,0 +1,35 @@
+<div>
+    <div class="row">
+        <div class="col col-md-2">
+            <img src="{{user.photoPath}}" alt="">
+        </div>
+        <div class="col col-md-4">
+            <h3>{{user.name}} {{user.surname}}</h3>
+            <h5>{{user.name}} {{user.surname}}</h5>
+            <p>{{user.description}}</p>
+        </div>
+        <div class="col col-md-6">
+            <a href="/users/{{user._id}}/edit" class="btn btn-success">Edit</a>
+        </div>
+    </div>
+
+
+
+    <div class="wrap">
+      {{#each user.tags}}
+        <span class="badge badge-success">{{this}}</span>
+      {{/each}}    
+    </div>
+
+<div class="row">
+    <div class="col">
+        <h3>Your Questions</h3>
+        {{> questions/list}}
+    </div>
+    <div class="col">
+        <h3>Your Resources</h3>
+        {{> resources/list}}
+    </div>
+</div>
+
+</div> 
