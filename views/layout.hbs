@@ -29,6 +29,25 @@
         <form class="form-inline my-2 my-lg-0">
           <input class="form-control mr-sm-2" type="search" placeholder="Search" aria-label="Search">
           <button class="btn btn-outline-success my-2 my-sm-0" type="submit">Search</button>
+
+           <ul class="navbar-nav mr-auto">
+          {{#if session}}
+            <li class="nav-item active">
+              <a class="nav-link" href="/users/{{session.id}}">My Profile</a>
+            </li>
+            <li class="nav-item">
+              <a class="nav-link" href="/">Logout</a>
+            </li>
+          {{else}}
+            <li class="nav-item">
+              <a class="nav-link" href="/users/signup">Signup</a>
+            </li>
+            <li class="nav-item">
+              <a class="nav-link" href="/sessions/create">Login</a>
+            </li>
+          {{/if}}
+          </ul>
+         
         </form>
       </div>
     </nav>

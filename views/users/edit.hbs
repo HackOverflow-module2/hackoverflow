@@ -1,0 +1,55 @@
+<div class="row mt-5">
+  <form action="/users/{{user._id}}/edit" method="post" class="col-4 mx-auto" enctype="multipart/form-data">
+
+    <div class="">
+  
+        <img src="{{user.photoPath}}" alt="">
+        <input type="file" id="photo" name="photo"/>
+    </div>
+
+    <div class="input-group mb-2">
+
+      <input type="text" class="form-control {{#if errors.name }}is-invalid{{/if}}" name="name" placeholder="Name" value="{{ user.name }}"/>
+      {{#if errors.name }}
+        <div class="invalid-feedback">
+          {{ errors.name }}
+        </div>
+      {{/if}}
+    </div>
+
+    <div class="input-group mb-2">
+
+      <input type="text" class="form-control {{#if errors.surname }}is-invalid{{/if}}" name="surname" placeholder="Last name" value="{{ user.surname }}"/>
+      {{#if errors.surname }}
+        <div class="invalid-feedback">
+          {{ errors.surname }}
+        </div>
+      {{/if}}
+    </div>
+
+    <div class="input-group mb-2">
+
+      <input type="text" class="form-control {{#if errors.nickname }}is-invalid{{/if}}" name="nickname" placeholder="nickname" value="{{ user.nickname }}"/>
+      {{#if errors.nickname }}
+        <div class="invalid-feedback">
+          {{ errors.nickname }}
+        </div>
+      {{/if}}
+    </div>
+
+      <div class="input-group mb-2">
+
+      <input type="text" class="form-control {{#if errors.description }}is-invalid{{/if}}" name="description" placeholder="description" value="{{ user.description }}"/>
+      {{#if errors.description }}
+        <div class="invalid-feedback">
+          {{ errors.description }}
+        </div>
+      {{/if}}
+    </div>
+    
+    <div class="form-actions col-auto">
+      <button class="btn btn-primary mb-2" type="submit">Update profile</button>
+    </div>
+    <hr>
+  </form>
+</div>

@@ -14,3 +14,11 @@ a {
 .inner-wrap {
   margin: 15px;
 }
+
+img {
+  max-width: 100%;
+}
+
+.btn-sm {
+  padding: 8px;
+}

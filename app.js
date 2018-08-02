@@ -8,6 +8,7 @@ const logger = require('morgan');
 const passport = require('passport');
 const session = require('express-session');
 
+
 require('./configs/db.config');
 require('./configs/hbs.config');
 require('./configs/passport.config').setup(passport);;
@@ -45,6 +46,11 @@ app.use(session({
 }));
 app.use(passport.initialize());
 app.use(passport.session());
+
+app.use((req, res, next) => {
+  res.locals.session = req.user;
+  next();
+})
 
 app.use('/', indexRouter);
 app.use('/users', usersRouter);
