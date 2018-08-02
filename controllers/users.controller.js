@@ -4,6 +4,7 @@ const User = require('../models/user.model');
 const Question = require('../models/question.model');
 const Resource = require('../models/resource.model');
 
+
 module.exports.create = (req, res, next) => {
   res.render('users/signup');
 }
@@ -75,12 +76,17 @@ module.exports.doEdit = (req, res, next) => {
   console.log('Req --> ', req)
   const id = req.params.id;
 
-  const name = req.body.name;
-  const surname = req.body.surname;
-  const nickname = req.body.nickname;
-  const photo = `/images/profile-photos/${req.file.filename}`;
+  const updateSet = {
+    name: req.body.name,
+    surname: req.body.surname,
+    nickname: req.body.nickname
+  }
+
+  if (req.file) {
+    updateSet.photoPath = `/images/profile-photos/${req.file.filename}`;
+  }
   
-  User.findByIdAndUpdate(id, {"name": name, "surname": surname, "nickname": nickname, "photoPath": photo}, {runValidators: true, new: true})
+  User.findByIdAndUpdate(id, { $set: updateSet }, {runValidators: true, new: true })
     .then(user => {
       if(user){
         res.render('users/detail', {

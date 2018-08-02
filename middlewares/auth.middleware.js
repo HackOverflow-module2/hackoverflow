@@ -8,3 +8,12 @@ module.exports.isAuthenticated = (req, res, next) => {
             .redirect('/sessions/create');
     }
 }
+
+
+module.exports.isOwner = (req, res, next) => {
+    if (req.user._id == req.params.id) {
+        next();
+    } else {
+        next(createError(403));
+    }
+}
