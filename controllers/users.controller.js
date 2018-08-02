@@ -57,11 +57,33 @@ module.exports.detail = (req, res, next) => {
 }
 
 module.exports.edit = (req, res, next) => {
-  const id = req.params.id
+  const id = req.params.id;
   User.findById(id)
     .then(user => {
       if(user) {
         res.render('users/edit', {
+          user
+        })
+      } else {
+        next(createError(404, 'user not found'));
+      }
+    })
+    .catch(error => next(error))
+}
+
+module.exports.doEdit = (req, res, next) => {
+  console.log('Req --> ', req)
+  const id = req.params.id;
+
+  const name = req.body.name;
+  const surname = req.body.surname;
+  const nickname = req.body.nickname;
+  const photo = `/images/profile-photos/${req.file.filename}`;
+  
+  User.findByIdAndUpdate(id, {"name": name, "surname": surname, "nickname": nickname, "photoPath": photo}, {runValidators: true, new: true})
+    .then(user => {
+      if(user){
+        res.render('users/detail', {
           user
         })
       } else {

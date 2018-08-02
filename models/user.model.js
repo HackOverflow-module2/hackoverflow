@@ -17,9 +17,6 @@ const userSchema = new mongoose.Schema({
       unique: true,
       required: 'Please enter a nickname'
     },
-    photoName: {
-      type: String
-    },
     photoPath: {
       type: String,
       default: "https://www.ienglishstatus.com/wp-content/uploads/2018/04/Sad-Profile-Pic-for-Whatsapp.png"

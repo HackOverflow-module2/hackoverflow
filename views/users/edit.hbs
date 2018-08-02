@@ -4,9 +4,7 @@
     <div class="">
   
         <img src="{{user.photoPath}}" alt="">
-        <input type="file"
-               id="photo" name="photo"
-               accept="image/png, image/jpeg" />
+        <input type="file" id="photo" name="photo"/>
     </div>
 
     <div class="input-group mb-2">
@@ -39,28 +37,18 @@
       {{/if}}
     </div>
 
-    <div class="input-group mb-2">
+      <div class="input-group mb-2">
 
-      <input type="email" class="form-control {{#if errors.email }}is-invalid{{/if}}" name="email" placeholder="user@exaple.org" value="{{ user.email }}"/>
-      {{#if errors.email }}
+      <input type="text" class="form-control {{#if errors.description }}is-invalid{{/if}}" name="description" placeholder="description" value="{{ user.description }}"/>
+      {{#if errors.description }}
         <div class="invalid-feedback">
-          {{ errors.email }}
-        </div>
-      {{/if}}
-    </div>
-
-    <div class="input-group mb-2">
-  
-      <input type="password" class="form-control {{#if errors.password }}is-invalid{{/if}}" name="password" placeholder="Password"/>
-      {{#if errors.password }}
-        <div class="invalid-feedback">
-          {{ errors.password }}
+          {{ errors.description }}
         </div>
       {{/if}}
     </div>
     
     <div class="form-actions col-auto">
-      <button class="btn btn-primary mb-2" type="submit" >Update profile</button>
+      <button class="btn btn-primary mb-2" type="submit">Update profile</button>
     </div>
     <hr>
   </form>

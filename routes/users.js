@@ -22,5 +22,13 @@ router.get(
     usersController.edit
 )
 
+router.post(
+    '/:id/edit',
+    authMiddleware.isAuthenticated,
+    upload.single('photo'),
+    /* usersMiddleware.isOwner, */
+    usersController.doEdit
+)
+
 
 module.exports = router;
