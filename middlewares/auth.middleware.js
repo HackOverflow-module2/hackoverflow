@@ -9,7 +9,6 @@ module.exports.isAuthenticated = (req, res, next) => {
     }
 }
 
-
 module.exports.isOwner = (req, res, next) => {
     if (req.user._id == req.params.id) {
         next();
@@ -17,3 +16,13 @@ module.exports.isOwner = (req, res, next) => {
         next(createError(403));
     }
 }
+
+module.exports.checkRole = (role) => {
+    return (req, res, next) => {
+      if (req.isAuthenticated() && req.user.role === role) {
+        next();
+      } else {
+        next(createError(403, 'Insufficient privileges'))
+      }
+    }
+  }
