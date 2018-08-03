@@ -73,7 +73,7 @@ module.exports.edit = (req, res, next) => {
 }
 
 module.exports.doEdit = (req, res, next) => {
-  console.log('Req --> ', req)
+  //console.log('Req --> ', req)
   const id = req.params.id;
 
   const updateSet = {

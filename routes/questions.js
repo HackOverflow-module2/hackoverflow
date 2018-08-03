@@ -9,7 +9,11 @@ router.post('/create',authMiddleware.isAuthenticated, questionsController.doCrea
 
 router.get('/:id', authMiddleware.isAuthenticated, questionsController.detail);
 
-router.get('/:id/delete', authMiddleware.isAuthenticated, questionsController.delete);
+router.get(
+    '/:id/delete', 
+    authMiddleware.checkRole(constants.ROLE_ADMIN),
+    questionsController.delete
+);
 
 
 module.exports = router;
