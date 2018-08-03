@@ -57,3 +57,11 @@ module.exports.detail = (req, res, next) => {
     .catch(error => next(error))
 }
 
+module.exports.delete = (req, res, next) => {
+    const id = req.params.id;
+    Question.findByIdAndDelete(id)
+        .then(() => {
+            res.redirect('/');
+        })
+        .catch(error => next(error))
+}

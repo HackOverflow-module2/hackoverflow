@@ -1,6 +1,13 @@
 <div class="card">
   <div class="card-header">
-    {{ resource.title }}
+   <div class="row">
+      <div class="col col-md-5">
+        {{ resource.title }}
+      </div>
+      <div class="col col-md-7">
+        <a href="/resources/{{resource.id}}/delete" class="btn btn-danger btn-sm">Delete</a>
+      </div>
+    </div>
   </div>
   <div class="card-body">
     <blockquote class="blockquote mb-0">

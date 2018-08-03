@@ -60,3 +60,12 @@ module.exports.detail = (req, res, next) => {
             }
         });
 }
+
+module.exports.delete = (req, res, next) => {
+    const id = req.params.id;
+    Resource.findByIdAndDelete(id)
+        .then(() => {
+            res.redirect('/');
+        })
+        .catch(error => next(error))
+}

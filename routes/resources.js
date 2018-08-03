@@ -8,5 +8,6 @@ router.post('/create',authMiddleware.isAuthenticated, resourcesController.doCrea
 
 router.get('/:id', authMiddleware.isAuthenticated, resourcesController.detail);
 
+router.get('/:id/delete', authMiddleware.isAuthenticated, resourcesController.delete);
 
 module.exports = router;
