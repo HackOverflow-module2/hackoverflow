@@ -3,6 +3,7 @@ const router = express.Router();
 const resourcesController = require('../controllers/resources.controller');
 const authMiddleware = require('../middlewares/auth.middleware');
 const constants = require('../constants');
+const Resource = require('../models/resource.model');
 
 
 router.get('/create', authMiddleware.isAuthenticated, resourcesController.create);
@@ -12,9 +13,8 @@ router.get('/:id', authMiddleware.isAuthenticated, resourcesController.detail);
 
 router.get(
     '/:id/delete', 
-    authMiddleware.checkRole(constants.ROLE_ADMIN),
+    authMiddleware.checkPostOwner(constants.ROLE_ADMIN, Resource),
     resourcesController.delete
 );
-
 
 module.exports = router;

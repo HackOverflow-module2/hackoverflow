@@ -1,5 +1,6 @@
 const createError = require('http-errors');
 
+
 module.exports.isAuthenticated = (req, res, next) => {
     if(req.isAuthenticated()) {
         next();
@@ -25,6 +26,25 @@ module.exports.checkRole = (role) => {
         } else {
             next(createError(403, 'Insufficient privileges'))
         }
+
+    }
+}
+
+
+module.exports.checkPostOwner = (role, post) => {
+    
+    return (req, res, next) => {
+        id = req.params.id;
+        post.findById(id)
+            .populate('user')
+            .then(result => {
+                if (req.isAuthenticated() && (req.user.role === role || req.user._id == result.user.id)) {
+                    next();
+                } else {
+                    next(createError(403, 'Insufficient privileges'))
+                }
+            })
+            .catch()
 
     }
 }
