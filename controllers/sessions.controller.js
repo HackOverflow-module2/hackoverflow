@@ -1,4 +1,7 @@
 const passport = require('passport');
+const url = require('url');
+
+
 
 module.exports.create = (req, res, next) => {
   res.render('sessions/create');
@@ -30,7 +33,8 @@ module.exports.doCreate = (req, res, next) => {
           if (error) {
             next(error)
           } else {
-            res.redirect(`/`)
+            const url = req.query.goto_url
+            res.redirect(`/${url}`)
           }
         });
       }
