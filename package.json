@@ -8,6 +8,8 @@
     "seeds": "node ./bin/seeds"
   },
   "dependencies": {
+    "ajax": "0.0.4",
+    "axios": "^0.18.0",
     "bcrypt": "^3.0.0",
     "cookie-parser": "~1.4.3",
     "debug": "~2.6.9",

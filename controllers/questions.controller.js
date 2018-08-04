@@ -31,7 +31,7 @@ module.exports.doCreate = (req, res, next) => {
             if (error instanceof mongoose.Error.ValidationError) {
                 console.error(error);
                 res.render('questions/create', { 
-                    question: question,
+                    question,
                     errors: error.errors
                 });
             } else {
@@ -50,7 +50,7 @@ module.exports.detail = (req, res, next) => {
         if(question) {
             res.render('questions/detail', {
                 question,
-                answers
+                answers: answers.reverse()
             })
         } 
     })
@@ -65,3 +65,46 @@ module.exports.delete = (req, res, next) => {
         })
         .catch(error => next(error))
 }
+
+module.exports.doUpdate = (req, res, next) => {
+    const id = req.params.id;
+
+    Question.findByIdAndUpdate(id, { $inc: {rating: 1} })
+        .then(question => {
+            if(question) {
+                res.render('questions/detail', {
+                    question
+                })
+            } else {
+                next(createError(404, 'user not found'));
+            }
+        })
+        .catch(error => next(error))
+}
+
+module.exports.doEdit = (req, res, next) => {
+
+    const id = req.params.id;
+  
+    const updateSet = {
+      name: req.body.name,
+      surname: req.body.surname,
+      nickname: req.body.nickname
+    }
+  
+    if (req.file) {
+      updateSet.photoPath = `/images/profile-photos/${req.file.filename}`;
+    }
+    
+    User.findByIdAndUpdate(id, { $set: updateSet }, {runValidators: true, new: true })
+      .then(user => {
+        if(user){
+          res.render('users/detail', {
+            user
+          })
+        } else {
+          next(createError(404, 'user not found'));
+        }
+      })
+      .catch(error => next(error))
+  }

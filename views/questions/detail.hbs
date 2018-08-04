@@ -3,6 +3,12 @@
     <div class="row">
       <div class="col col-md-5">
         {{ question.title }}
+        <form action="/questions/{{question.id}}/rating/update" method="post">
+        <input type="text" id="like" name="like" value="{{question.rating}}">  
+        <button type="submit">       
+          <i class="fas fa-heart like">&nbsp;&nbsp;</i>
+        </button> 
+        </form>
       </div>
       <div class="col col-md-7">
         <a href="/questions/{{question.id}}/delete" class="btn btn-danger btn-sm">Delete</a>

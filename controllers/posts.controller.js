@@ -10,8 +10,8 @@ module.exports.list = (req, res, next) => {
     Promise.all([questionPromise, resourcePromise])
         .then(([questions, resources]) => {
             res.render('posts/list', {
-                questions,
-                resources
+                questions: questions.reverse(),
+                resources: resources.reverse()
             })
         })
         .catch(error => next(error))

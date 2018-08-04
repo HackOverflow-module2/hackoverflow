@@ -17,5 +17,6 @@ router.get(
     questionsController.delete
 );
 
+router.post('/:id/rating/update', questionsController.doUpdate);
 
 module.exports = router;

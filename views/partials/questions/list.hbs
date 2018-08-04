@@ -1,21 +1,21 @@
 {{#each questions}}
     
-<div class="card">
-  <div class="card-header">
-    <div class="row"></div>
-    <a href="/questions/{{this.id}}">{{this.title}}</a>
-       <i class="fas fa-heart like">&nbsp;&nbsp;<span class="rating">{{this.rating}}</span></i>
-  </div>
-  <div class="card-body">
-    <h5 class="card-title">{{this.description}}</h5>
-    <p class="card-text">{{this.user.name}}</p>
-    <div class="wrap">
-      {{#each this.tags}}
-        <span class="badge badge-success">{{this}}</span>
-      {{/each}}    
+  <div class="card">
+    <div class="card-header">
+      <div class="row"></div>
+      <a href="/questions/{{this.id}}">{{this.title}}</a>
+        <i class="fas fa-heart like">&nbsp;&nbsp;<span class="rating">{{this.rating}}</span></i>
     </div>
-    <a href="/questions/{{this.id}}" class="btn btn-primary btn-sm">Answer</a>
+    <div class="card-body">
+      <h5 class="card-title">{{this.description}}</h5>
+      <p class="card-text">{{this.user.name}}</p>
+      <div class="wrap">
+        {{#each this.tags}}
+          <span class="badge badge-success">{{this}}</span>
+        {{/each}}    
+      </div>
+      <a href="/questions/{{this.id}}" class="btn btn-primary btn-sm">Answer</a>
+    </div>
   </div>
-</div>
 
 {{/each}}
