@@ -30,3 +30,20 @@ module.exports.doUpdate = (req, res, next) => {
         })
         .catch(error => next(error))
 }
+
+
+module.exports.filter = (req, res, next) => {
+    const search = req.body.search;
+    // const questionPromise = Question.find( {title: search } )
+    // const resourcePromise =  Resource.find( {title: search } )
+    const questionPromise = Question.find( {title: { $regex: search } } )
+    const resourcePromise =  Resource.find( {title: { $regex: search } } )
+    Promise.all([questionPromise, resourcePromise])
+    .then(([questions, resources]) => {
+        res.render('posts/list', {
+            questions: questions.reverse(),
+            resources: resources.reverse()
+        })
+    })
+    .catch(error => next(error))
+}
