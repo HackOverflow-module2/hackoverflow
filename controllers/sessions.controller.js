@@ -1,10 +1,18 @@
 const passport = require('passport');
+const url = require('url');
+
+
 
 module.exports.create = (req, res, next) => {
-  res.render('sessions/create');
+  const url = req.query
+  console.log(req.query)
+  res.render('sessions/create', {
+    url
+  });
 }
 
 module.exports.doCreate = (req, res, next) => {
+  console.log(req.body.url);
 
   function renderWithErrors(errors) {
     res.status(400).render('sessions/create', {
@@ -30,7 +38,7 @@ module.exports.doCreate = (req, res, next) => {
           if (error) {
             next(error)
           } else {
-            res.redirect(`/`)
+            res.redirect(req.body.url)
           }
         });
       }
