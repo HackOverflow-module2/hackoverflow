@@ -38,7 +38,11 @@ module.exports.doCreate = (req, res, next) => {
           if (error) {
             next(error)
           } else {
-            res.redirect(req.body.url)
+              if(!req.body.url) {
+                res.redirect('/')
+              } else {
+                res.redirect(req.body.url)
+              }
           }
         });
       }
