@@ -19,7 +19,12 @@
           <span class="badge badge-success">{{this}}</span>
         {{/each}}    
       </div>
-      <a href="/questions/{{this.id}}" class="btn btn-primary btn-sm">Answer</a>
+      {{#date this.createdAt}}
+      <div>{{this}}</div>
+      {{/date}}
+      <div>
+        <a href="/questions/{{this.id}}" class="btn btn-primary btn-sm">Answer</a>
+      </div>
     </div>
   </div>
 
