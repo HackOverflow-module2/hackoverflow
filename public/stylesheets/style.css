@@ -23,6 +23,13 @@ img {
   padding: 8px;
 }
 
+.btn-default {
+  background: transparent;
+  color: rgba(0, 0, 0, 0.9);
+  border-color: rgba(0, 0, 0, 0.1);
+  box-shadow: none;
+}
+
 input#like {
   background: transparent;
   border: 0;

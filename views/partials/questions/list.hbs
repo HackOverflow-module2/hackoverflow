@@ -1,11 +1,10 @@
 {{#each questions}}
     
-  <div class="card">
+  <div class="card post-card">
     <div class="card-header">
-      <div class="row"></div>
       <a href="/questions/{{this.id}}">{{this.title}}</a>
         <form action="/{{this.id}}/rating/update" method="post">
-          <input type="button" id="like" name="like" value="{{this.rating}}">  
+          <input type="button" id="like" name="like" value="{{this.rating}}" class="rating-num">  
           <button type="submit" class="btn btn-default btn-sm">       
             <i class="fas fa-heart like"></i>
           </button> 
