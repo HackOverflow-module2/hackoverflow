@@ -1,8 +1,7 @@
 const mongoose = require('mongoose');
+require('dotenv');
 
-const DB_NAME = 'hackoverflow'
-const MONGODB_URI = `mongodb://localhost:27017/${DB_NAME}`;
-
+const MONGODB_URI = process.env.MONGO_URI;
 mongoose.connect(MONGODB_URI)
     .then(() => {
         console.info(`Connected to the database: ${MONGODB_URI}`)
