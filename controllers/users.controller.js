@@ -79,7 +79,8 @@ module.exports.doEdit = (req, res, next) => {
   const updateSet = {
     name: req.body.name,
     surname: req.body.surname,
-    nickname: req.body.nickname
+    nickname: req.body.nickname,
+    description: req.body.description
   }
 
   if (req.file) {
