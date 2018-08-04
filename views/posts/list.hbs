@@ -26,21 +26,23 @@
 
 <div class="row">
     <div class="col">
-        <div class="text-right">
-            <i class="fas fa-sort"></i>
-            <span class="btn-sm btn-default btn order-rating">rating</span>
+        <div class="text-right mb-2">
+            
+            <span class="btn-sm btn-default btn order-rating">rating &nbsp; <i class="fas fa-sort"></i></span>
+            <span class="btn-sm btn-default btn order-date">date &nbsp;<i class="fas fa-sort"></i></span>
+
         </div>
-        <div class="questions-wrap">
+        <div class="questions-wrap posts-wrap">
             {{> questions/list}}
         </div>
     </div>
     
     <div class="col">
-        <div class="text-right">
-            <i class="fas fa-sort"></i>
-            <span class="btn-sm btn-default btn order-rating">rating</span>
+        <div class="text-right mb-2">
+            <span class="btn-sm btn-default btn order-rating-resource">rating &nbsp;  <i class="fas fa-sort"></i></span>
+            <span class="btn-sm btn-default btn order-date-resource">date &nbsp;<i class="fas fa-sort"></i></span>
         </div>
-        <div class="resources-wrap">
+        <div class="resources-wrap posts-wrap">
         {{> resources/list}}
         </div>
     </div>

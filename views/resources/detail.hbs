@@ -3,6 +3,12 @@
    <div class="row">
       <div class="col col-md-5">
         {{ resource.title }}
+        <form action="/resources/{{resource.id}}/rating/update" method="post" class="inline-block">
+          <input type="button" id="like" name="like" value="{{resource.rating}}">  
+          <button type="submit"  class="btn btn-like">       
+            <i class="fas fa-heart like"></i>
+          </button> 
+        </form>
       </div>
       <div class="col col-md-7">
         <a href="/resources/{{resource.id}}/delete" class="btn btn-danger btn-sm">Delete</a>

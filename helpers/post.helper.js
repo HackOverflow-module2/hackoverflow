@@ -19,4 +19,11 @@ module.exports = (hbs) => {
         return `${hour}:${minute} - ${dt}/${month}/${year} ` 
         
     })
+
+    hbs.registerHelper('dateTime', function (date) {
+        dateTime = Date.parse(date);
+        return dateTime
+        
+    })
+
 }

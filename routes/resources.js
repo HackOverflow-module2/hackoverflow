@@ -17,4 +17,6 @@ router.get(
     resourcesController.delete
 );
 
+router.post('/:id/rating/update', resourcesController.doUpdate);
+
 module.exports = router;

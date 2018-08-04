@@ -5,7 +5,7 @@
         {{ question.title }}
         <form action="/questions/{{question.id}}/rating/update" method="post" class="inline-block">
           <input type="button" id="like" name="like" value="{{question.rating}}">  
-          <button type="submit"  class="btn btn-default btn-sm">       
+          <button type="submit"  class="btn btn-like">       
             <i class="fas fa-heart like"></i>
           </button> 
         </form>

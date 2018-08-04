@@ -1,6 +1,15 @@
 body {
-  padding: 50px;
   font: 14px "Lucida Grande", Helvetica, Arial, sans-serif;
+}
+
+.body-wrap {
+  padding: 40px;
+
+}
+
+.max-container {
+  max-width: 1800px;
+  margin: 0 auto;
 }
 
 a {
@@ -19,6 +28,11 @@ img {
   max-width: 100%;
 }
 
+a {
+  color: rgba(0, 0, 0, 0.9);
+
+}
+
 .btn-sm {
   padding: 8px;
 }
@@ -35,6 +49,11 @@ input#like {
   border: 0;
 }
 
+.btn-like {
+  padding: 0;
+  border: 0;
+  background: transparent;
+}
 .inline-block {
   display: inline-block;
 }
