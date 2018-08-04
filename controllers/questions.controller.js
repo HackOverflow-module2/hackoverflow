@@ -31,7 +31,7 @@ module.exports.doCreate = (req, res, next) => {
             if (error instanceof mongoose.Error.ValidationError) {
                 console.error(error);
                 res.render('questions/create', { 
-                    question: question,
+                    question,
                     errors: error.errors
                 });
             } else {
@@ -50,7 +50,7 @@ module.exports.detail = (req, res, next) => {
         if(question) {
             res.render('questions/detail', {
                 question,
-                answers
+                answers: answers.reverse()
             })
         } 
     })
@@ -62,6 +62,20 @@ module.exports.delete = (req, res, next) => {
     Question.findByIdAndDelete(id)
         .then(() => {
             res.redirect('/');
+        })
+        .catch(error => next(error))
+}
+
+module.exports.doUpdate = (req, res, next) => {
+    const id = req.params.id;
+
+    Question.findByIdAndUpdate(id, { $inc: {rating: 1} })
+        .then(question => {
+            if(question) {
+                res.redirect(`/questions/${id}`)
+            } else {
+                next(createError(404, 'user not found'));
+            }
         })
         .catch(error => next(error))
 }

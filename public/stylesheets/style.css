@@ -22,3 +22,12 @@ img {
 .btn-sm {
   padding: 8px;
 }
+
+input#like {
+  background: transparent;
+  border: 0;
+}
+
+.inline-block {
+  display: inline-block;
+}
