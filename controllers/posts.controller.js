@@ -17,4 +17,16 @@ module.exports.list = (req, res, next) => {
         .catch(error => next(error))
 }
 
+module.exports.doUpdate = (req, res, next) => {
+    const id = req.params.id;
 
+    Question.findByIdAndUpdate(id, { $inc: {rating: 1} })
+        .then(question => {
+            if(question) {
+                res.redirect(`/`)
+            } else {
+                next(createError(404, 'user not found'));
+            }
+        })
+        .catch(error => next(error))
+}

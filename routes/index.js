@@ -9,6 +9,8 @@ const postsController = require('../controllers/posts.controller');
 }); */
 
 router.get('/', postsController.list);
+router.post('/:id/rating/update', postsController.doUpdate);
+
 
 //router.get('/', resourcesController.list);
 

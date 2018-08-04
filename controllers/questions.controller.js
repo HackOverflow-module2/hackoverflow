@@ -72,39 +72,10 @@ module.exports.doUpdate = (req, res, next) => {
     Question.findByIdAndUpdate(id, { $inc: {rating: 1} })
         .then(question => {
             if(question) {
-                res.render('questions/detail', {
-                    question
-                })
+                res.redirect(`/questions/${id}`)
             } else {
                 next(createError(404, 'user not found'));
             }
         })
         .catch(error => next(error))
 }
-
-module.exports.doEdit = (req, res, next) => {
-
-    const id = req.params.id;
-  
-    const updateSet = {
-      name: req.body.name,
-      surname: req.body.surname,
-      nickname: req.body.nickname
-    }
-  
-    if (req.file) {
-      updateSet.photoPath = `/images/profile-photos/${req.file.filename}`;
-    }
-    
-    User.findByIdAndUpdate(id, { $set: updateSet }, {runValidators: true, new: true })
-      .then(user => {
-        if(user){
-          res.render('users/detail', {
-            user
-          })
-        } else {
-          next(createError(404, 'user not found'));
-        }
-      })
-      .catch(error => next(error))
-  }
