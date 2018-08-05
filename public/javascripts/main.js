@@ -48,3 +48,11 @@ function arraySortDate(arr) {
     
     });
 }
+
+//markdown editor
+var editor = new Editor({
+    element: document.getElementById("description")
+});
+
+editor.render();
+

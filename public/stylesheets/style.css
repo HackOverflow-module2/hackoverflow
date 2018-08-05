@@ -57,3 +57,22 @@ input#like {
 .inline-block {
   display: inline-block;
 }
+
+.CodeMirror {
+  border: 1px solid #cad1d7;
+  border-bottom-left-radius: 5px;
+  border-bottom-right-radius: 5px;
+  height: 250px;
+}
+
+.editor-toolbar {
+  border: 1px solid #cad1d7;
+  border-top-left-radius: 5px;
+  border-top-right-radius: 5px;
+}
+
+.editor-toolbar:before, .editor-toolbar:after {
+  content: "";
+  background:transparent;
+  background-color:transparent;
+}
