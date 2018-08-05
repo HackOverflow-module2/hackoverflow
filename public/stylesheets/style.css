@@ -58,6 +58,11 @@ input#like {
   display: inline-block;
 }
 
+.tag-description {
+  height: 55px;
+}
+
+/* change markdown editor styles */
 .CodeMirror {
   border: 1px solid #cad1d7;
   border-bottom-left-radius: 5px;

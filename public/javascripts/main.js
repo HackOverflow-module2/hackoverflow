@@ -7,6 +7,12 @@ $( document ).ready(function() {
     order(".order-rating-resource",".resources-wrap", arraySortRatingNum);
     order(".order-date-resource",".resources-wrap", arraySortDate); 
 
+    // ellipses
+
+    $(".ellipses").dotdotdot({
+        // Options go here
+     });
+
 });
 
 function order(ratingButton, postsList, sortFunction) {
