@@ -1,25 +1,43 @@
 {{#each questions}}
     
-  <div class="card">
+  <div class="card post-card questions-card mb-3">
     <div class="card-header">
-      <div class="row"></div>
-      <a href="/questions/{{this.id}}">{{this.title}}</a>
-        <form action="/{{this.id}}/rating/update" method="post">
-          <input type="button" id="like" name="like" value="{{this.rating}}">  
-          <button type="submit" class="btn btn-default btn-sm">       
-            <i class="fas fa-heart like"></i>
-          </button> 
-        </form>
+      <div class="row align-items-center">
+        <div class="col">
+          <a href="/questions/{{this.id}}">{{this.title}}</a>
+        </div>
+        <div class="col text-right">
+          <form action="/{{this.id}}/rating/update" method="post" class="d-inline-block">
+            <input type="button" id="like" name="like" value="{{this.rating}}" class="rating-num">  
+            <button type="submit" class="btn btn-like">       
+              <i class="fas fa-heart like"></i>
+            </button> 
+          </form>
+        </div>
+      </div>
     </div>
     <div class="card-body">
       <h5 class="card-title">{{this.description}}</h5>
       <p class="card-text">{{this.user.name}}</p>
-      <div class="wrap">
+      <div class="mb-3">
         {{#each this.tags}}
           <span class="badge badge-success">{{this}}</span>
         {{/each}}    
       </div>
-      <a href="/questions/{{this.id}}" class="btn btn-primary btn-sm">Answer</a>
+      {{!-- hidden div to get date order --}}
+      <div class="date d-none">
+      {{#dateTime this.createdAt}}
+        {{this}}
+      {{/dateTime}}
+      </div>
+      <div class="mb-3">
+      {{#date this.createdAt}}
+        {this}}
+      {{/date}}
+      </div>
+      <div>
+        <a href="/questions/{{this.id}}" class="btn btn-primary btn-sm">Answer</a>
+      </div>
     </div>
   </div>
 

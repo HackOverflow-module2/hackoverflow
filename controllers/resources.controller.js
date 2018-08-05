@@ -69,3 +69,17 @@ module.exports.delete = (req, res, next) => {
         })
         .catch(error => next(error))
 }
+
+module.exports.doUpdate = (req, res, next) => {
+    const id = req.params.id;
+
+    Resource.findByIdAndUpdate(id, { $inc: {rating: 1} })
+        .then(result => {
+            if(result) {
+                res.redirect(`/resources/${id}`)
+            } else {
+                next(createError(404, 'resource not found'));
+            }
+        })
+        .catch(error => next(error))
+}
