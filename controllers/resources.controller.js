@@ -2,6 +2,7 @@ const mongoose = require('mongoose');
 const Resource = require('../models/resource.model');
 const User = require('../models/user.model');
 const Tag = require('../models/tag.model');
+const sentiment = require('../service/service.sentiment');
 
 module.exports.create = (req, res, next) => {
     Tag.find()
@@ -14,12 +15,14 @@ module.exports.create = (req, res, next) => {
 }
 
 module.exports.doCreate = (req, res, next) => {
+    const sentimentAnalysis = sentiment.analyzeSentiment(req.body.description)
 
     const resource = new Resource({
         title: req.body.title,
         description: req.body.description,
         user: req.user._id,
-        tags: req.body.tags
+        tags: req.body.tags,
+        sentiment: sentimentAnalysis.score
     });
     resource.save()
         .then((resource) => {

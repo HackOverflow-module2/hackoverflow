@@ -3,7 +3,6 @@ const Question = require('../models/question.model');
 const User = require('../models/user.model');
 const Answer = require('../models/answer.model');
 const Tag = require('../models/tag.model');
-// const Sentiment = require('sentiment');
 const sentiment = require('../service/service.sentiment');
 
 module.exports.create = (req, res, next) => {
