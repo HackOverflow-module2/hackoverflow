@@ -5,10 +5,11 @@ const Resource = require('../models/resource.model');
 const User = require('../models/user.model');
 
 module.exports.list = (req, res, next) => {
+    const url = req.originalUrl;
     const currentPage = Number(req.query.page) || 0;
     const limitValue = 3;
     const skipValue = currentPage*limitValue;
-
+    console.log('PAGINA PRINCIPAL --> ', url)
     const questionPromise = Question.find().skip(skipValue).limit(limitValue);
     const resourcePromise =  Resource.find().skip(skipValue).limit(limitValue);
     Promise.all([questionPromise, resourcePromise])
@@ -17,26 +18,15 @@ module.exports.list = (req, res, next) => {
                 questions: questions.reverse(),
                 resources: resources.reverse(),
                 nextPage: currentPage + 1,
-                prevPage: currentPage === 0 ? 0 : currentPage - 1
+                prevPage: !currentPage ? 0 : currentPage - 1,
+                url: url
             })
         })
         .catch(error => next(error))
 }
 
 //next two functions repeated for rating, fix!
-module.exports.doUpdate = (req, res, next) => {
-    const id = req.params.id;
 
-    Question.findByIdAndUpdate(id, { $inc: {rating: 1} })
-        .then(result => {
-            if(result) {
-                res.redirect(`/`)
-            } else {
-                next(createError(404, 'user not found'));
-            }
-        })
-        .catch(error => next(error))
-}
 
 module.exports.doUpdateResource = (req, res, next) => {
     const id = req.params.id;

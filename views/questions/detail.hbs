@@ -4,8 +4,9 @@
       <div class="col col-md-5">
         {{ question.title }}
         <form action="/questions/{{question.id}}/rating/update" method="post" class="inline-block">
-          <input type="button" id="like" name="like" value="{{question.rating}}">  
-          <button type="submit"  class="btn btn-like">       
+          <input type="button" id="like" name="like" value="{{question.rating}}">
+          <input type="hidden" name="url" value="{{this.url}}">  
+          <button type="submit" class="btn btn-like">       
             <i class="fas fa-heart like"></i>
           </button> 
         </form>
