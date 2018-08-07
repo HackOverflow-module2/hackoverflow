@@ -45,7 +45,8 @@ module.exports.setup = (passport) => {
   passport.use('github-auth', new GitHubStrategy({
     clientID: '6f984e8f9ad9f8dcd50b',
     clientSecret: '6d5f547818d4437cea03626b195c28c45a120a7a',
-    callbackURL: 'http://localhost:3000/sessions/github/cb'
+    callbackURL: 'http://localhost:3000/sessions/github/cb',
+    scope: 'user:email'
     }, authenticateOAuthUser));
 
 
@@ -56,9 +57,10 @@ module.exports.setup = (passport) => {
         if (user) {
           next(null, user);
         } else {
+          console.log(profile)
           user = new User({
             name: profile.username,
-            email: profile.email,
+            email: profile.emails[0].value,
             password: Math.random().toString(36).substring(7),
             social: {
               [socialId]: profile.id
