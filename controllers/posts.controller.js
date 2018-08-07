@@ -5,8 +5,8 @@ const Resource = require('../models/resource.model');
 const User = require('../models/user.model');
 
 module.exports.list = (req, res, next) => {
-    const questionPromise = Question.find().limit(10)
-    const resourcePromise =  Resource.find().limit(10)
+    const questionPromise = Question.find().limit(3)
+    const resourcePromise =  Resource.find().limit(3)
     Promise.all([questionPromise, resourcePromise])
         .then(([questions, resources]) => {
             res.render('posts/list', {
