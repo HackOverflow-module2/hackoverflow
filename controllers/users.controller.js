@@ -86,12 +86,17 @@ module.exports.doEdit = (req, res, next) => {
   if (req.file) {
     updateSet.photoPath = `/images/profile-photos/${req.file.filename}`;
   }
-  
-  User.findByIdAndUpdate(id, { $set: updateSet }, {runValidators: true, new: true })
-    .then(user => {
-      if(user){
+
+  const userPromise = User.findByIdAndUpdate(id, { $set: updateSet }, {runValidators: true, new: true })
+  const questionPromise = Question.find({'user': id});
+  const resourcePromise = Resource.find({'user': id});
+    Promise.all([userPromise, questionPromise, resourcePromise])    
+      .then(([user, questions, resources]) => {
+      if (user) {
         res.render('users/detail', {
-          user
+          user,
+          questions,
+          resources 
         })
       } else {
         next(createError(404, 'user not found'));
