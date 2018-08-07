@@ -13,6 +13,9 @@ $( document ).ready(function() {
         // Options go here
      });
 
+    paginationNext();
+
+    paginationPrev();
 });
 
 function order(ratingButton, postsList, sortFunction) {
@@ -62,3 +65,25 @@ var editor = new Editor({
 
 editor.render();
 
+//Pagination
+
+function paginationNext() {
+    $( '#next' ).click(function() {
+console.log($("#pagination").val())
+        let pagination = $("#pagination").val();
+
+        paginationNumber = Number(pagination);
+        paginationNumber++;
+        
+        $("#pagination").val() = paginationNumber;
+        console.log(paginationNumber)
+    });
+}
+
+function paginationPrev() {
+    $( '#prev' ).click(function() {
+        
+        $("#pagination").val() -= 1;
+ 
+    });
+}
