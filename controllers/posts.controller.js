@@ -11,6 +11,7 @@ module.exports.list = (req, res, next) => {
 
     const questionPromise = Question.find().skip(skipValue).limit(limitValue);
     const resourcePromise =  Resource.find().skip(skipValue).limit(limitValue);
+    
     Promise.all([questionPromise, resourcePromise])
         .then(([questions, resources]) => {
             res.render('posts/list', {
