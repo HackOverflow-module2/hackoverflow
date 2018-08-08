@@ -14,7 +14,9 @@
             <p>{{user.description}}</p>
         </div>
         <div class="col col-md-6">
-            <a href="/users/{{user._id}}/edit" class="btn btn-success">Edit</a>
+            {{#isOwner user session}}
+                <a href="/users/{{user._id}}/edit" class="btn btn-success">Edit</a>
+            {{/isOwner}}
         </div>
     </div>
 

@@ -45,5 +45,13 @@ module.exports = (hbs) => {
         }
     })
 
+    hbs.registerHelper('isOwner', (user, userSession, options) => {
+        if (user.id === userSession.id) {
+        return options.fn(this);
+        } else {
+        return options.inverse(this);
+        }
+    })
+
 }
 
