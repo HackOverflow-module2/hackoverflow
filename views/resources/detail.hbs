@@ -5,6 +5,7 @@
         {{ resource.title }}
         <form action="/resources/{{resource.id}}/rating/update" method="post" class="inline-block">
           <input type="button" id="like" name="like" value="{{resource.rating}}">  
+          <input type="hidden" name="url" value="{{this.url}}">  
           <button type="submit"  class="btn btn-like">       
             <i class="fas fa-heart like"></i>
           </button> 
