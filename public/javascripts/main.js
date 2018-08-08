@@ -12,7 +12,6 @@ $( document ).ready(function() {
     $(".ellipses").dotdotdot({
         // Options go here
      });
-
 });
 
 function order(ratingButton, postsList, sortFunction) {

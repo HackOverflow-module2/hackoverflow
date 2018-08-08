@@ -5,13 +5,19 @@ const Resource = require('../models/resource.model');
 const User = require('../models/user.model');
 
 module.exports.list = (req, res, next) => {
-    const questionPromise = Question.find().limit(10)
-    const resourcePromise =  Resource.find().limit(10)
+    const currentPage = Number(req.query.page) || 0;
+    const limitValue = 3;
+    const skipValue = currentPage*limitValue;
+
+    const questionPromise = Question.find().skip(skipValue).limit(limitValue);
+    const resourcePromise =  Resource.find().skip(skipValue).limit(limitValue);
     Promise.all([questionPromise, resourcePromise])
         .then(([questions, resources]) => {
             res.render('posts/list', {
                 questions: questions.reverse(),
-                resources: resources.reverse()
+                resources: resources.reverse(),
+                nextPage: currentPage + 1,
+                prevPage: currentPage === 0 ? 0 : currentPage - 1
             })
         })
         .catch(error => next(error))
