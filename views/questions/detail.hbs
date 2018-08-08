@@ -11,7 +11,9 @@
         </form>
       </div>
       <div class="col col-md-7">
-        <a href="/questions/{{question.id}}/delete" class="btn btn-danger btn-sm">Delete</a>
+        {{#isAdmin session }}
+          <a href="/questions/{{question.id}}/delete" class="btn btn-danger btn-sm">Delete</a>
+        {{/isAdmin}}
       </div>
     </div>
   </div>
