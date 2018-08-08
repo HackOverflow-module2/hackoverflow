@@ -54,3 +54,19 @@ module.exports.delete = (req, res, next)=> {
   req.logout();
   res.redirect('/sessions/create');
 }
+
+module.exports.createWithIDPCallback = (req, res, next) => {
+  passport.authenticate(`github-auth`, (error, user) => {
+    if (error) {
+      next(error);
+    } else {
+      req.login(user, (error) => {
+        if (error) {
+          next(error)
+        } else {
+          res.redirect(`/`)
+        }
+      });
+    }
+  })(req, res, next);
+}
