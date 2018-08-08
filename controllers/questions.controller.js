@@ -41,15 +41,18 @@ module.exports.doCreate = (req, res, next) => {
 }
 
 module.exports.detail = (req, res, next) => {
+    const url = req.originalUrl;
     const id = req.params.id;
     const questionPromise = Question.findById(id).populate('user');
     const answersPromise = Answer.find({question: id}).populate('user');
+
 
     Promise.all([questionPromise, answersPromise])
     .then(([question, answers]) => {
         if(question) {
             res.render('questions/detail', {
                 question,
+                url,
                 answers: answers.reverse()
             })
         } 
@@ -68,11 +71,14 @@ module.exports.delete = (req, res, next) => {
 
 module.exports.doUpdate = (req, res, next) => {
     const id = req.params.id;
+    const url = req.originalUrl;
+    //fix for homepage
+    const urlPrev = req.body.url || '/';
 
     Question.findByIdAndUpdate(id, { $inc: {rating: 1} })
-        .then(question => {
-            if(question) {
-                res.redirect(`/questions/${id}`)
+        .then(result => {
+            if(result) {
+                res.redirect(`${urlPrev}`)
             } else {
                 next(createError(404, 'user not found'));
             }

@@ -7,8 +7,9 @@
           <a href="/questions/{{this.id}}">{{this.title}}</a>
         </div>
         <div class="col text-right">
-          <form action="/{{this.id}}/rating/update" method="post" class="d-inline-block">
+          <form action="/questions/{{this.id}}/rating/update" method="post" class="d-inline-block">
             <input type="button" id="like" name="like" value="{{this.rating}}" class="rating-num">  
+            <input type="hidden" name="url" value="{{this.url}}">
             <button type="submit" class="btn btn-like">       
               <i class="fas fa-heart like"></i>
             </button> 

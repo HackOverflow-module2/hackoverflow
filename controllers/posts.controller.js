@@ -5,6 +5,7 @@ const Resource = require('../models/resource.model');
 const User = require('../models/user.model');
 
 module.exports.list = (req, res, next) => {
+    const url = req.originalUrl;
     const currentPage = Number(req.query.page) || 0;
     const limitValue = 3;
     const skipValue = currentPage*limitValue;
@@ -17,7 +18,8 @@ module.exports.list = (req, res, next) => {
                 questions: questions.reverse(),
                 resources: resources.reverse(),
                 nextPage: currentPage + 1,
-                prevPage: currentPage === 0 ? 0 : currentPage - 1
+                prevPage: currentPage === 0 ? 0 : currentPage - 1,
+                url
             })
         })
         .catch(error => next(error))
