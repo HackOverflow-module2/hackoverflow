@@ -57,9 +57,10 @@ module.exports.setup = (passport) => {
         if (user) {
           next(null, user);
         } else {
-          console.log(profile)
+          console.log(profile.id)
           user = new User({
             name: profile.username,
+            nickname: profile.username,
             email: profile.emails[0].value,
             password: Math.random().toString(36).substring(7),
             social: {

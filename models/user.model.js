@@ -16,7 +16,7 @@ const userSchema = new mongoose.Schema({
     nickname: {
       type: String,
       unique: true,
-      // required: 'Please enter a nickname'
+      required: 'Please enter a nickname'
     },
     photoPath: {
       type: String,
@@ -35,13 +35,16 @@ const userSchema = new mongoose.Schema({
     },
     email: {
       type: String,
-      //required: 'Email is required',
+      required: 'Email is required',
       match: [/^\w+([\.-]?\w+)*@\w+([\.-]?\w+)*(\.\w{2,3})+$/, 'Please fill a valid email address'],
       unique: true
     },
     password: {
       type: String,
       required: 'Password is required',
+    },
+    social: {
+      githubId: String
     }
   }, { timestamps: true });
   
