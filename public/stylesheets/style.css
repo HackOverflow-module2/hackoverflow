@@ -49,7 +49,7 @@ a {
   box-shadow: none;
 }
 
-input#like {
+input.rating-num {
   background: transparent;
   border: 0;
 }

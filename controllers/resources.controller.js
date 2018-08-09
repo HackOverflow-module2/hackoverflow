@@ -38,22 +38,6 @@ module.exports.doCreate = (req, res, next) => {
         })
 }
 
-module.exports.doUpdate = (req, res, next) => {
-    const id = req.params.id;
-    const url = req.originalUrl;
-    //fix for homepage
-    const urlPrev = req.body.url || '/';
-
-    Question.findByIdAndUpdate(id, { $inc: {rating: 1} })
-        .then(result => {
-            if(result) {
-                res.redirect(`${urlPrev}`)
-            } else {
-                next(createError(404, 'user not found'));
-            }
-        })
-        .catch(error => next(error))
-}
 
 module.exports.detail = (req, res, next) => {
     const url = req.originalUrl;
@@ -91,14 +75,11 @@ module.exports.delete = (req, res, next) => {
 
 module.exports.doUpdate = (req, res, next) => {
     const id = req.params.id;
-    const url = req.originalUrl;
-    //fix for homepage
-    const urlPrev = req.body.url || '/';
 
     Resource.findByIdAndUpdate(id, { $inc: {rating: 1} })
         .then(result => {
             if(result) {
-                res.redirect(`${urlPrev}`)
+                res.json({ newRating: result.rating + 1 })
             } else {
                 next(createError(404, 'resource not found'));
             }
