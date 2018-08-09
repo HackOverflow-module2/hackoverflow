@@ -54,15 +54,22 @@ function arraySortDate(arr) {
     });
 }
 
-$(document).on("submit", "#like-form", function(event) {    
-    event.preventDefault();
-    
-    $.post(this.action, function(data) {
-        $(this).find("#like").val(
-            data.newRating
-        )
-    }.bind(this))
-})
+function likes(form, likeVal) {
+    $(document).on("submit", form, function(event) {    
+        event.preventDefault();
+        
+        $.post(this.action, function(data) {
+            $(this).find(likeVal).val(
+                data.newRating
+            )
+        }.bind(this))
+    })
+
+}
+
+likes("#like-form", "#like")
+likes("#resources-like-form", "#resources-like")
+
 
 //markdown editor
 var editor = new Editor({

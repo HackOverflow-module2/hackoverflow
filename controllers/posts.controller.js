@@ -25,36 +25,6 @@ module.exports.list = (req, res, next) => {
         .catch(error => next(error))
 }
 
-//next two functions repeated for rating, fix!
-module.exports.doUpdate = (req, res, next) => {
-    const id = req.params.id;
-
-    Question.findByIdAndUpdate(id, { $inc: {rating: 1} })
-        .then(result => {
-            if(result) {
-                res.redirect(`/`)
-            } else {
-                next(createError(404, 'user not found'));
-            }
-        })
-        .catch(error => next(error))
-}
-
-module.exports.doUpdateResource = (req, res, next) => {
-    const id = req.params.id;
-
-    Resource.findByIdAndUpdate(id, { $inc: {rating: 1} })
-        .then(result => {
-            if(result) {
-                res.redirect(`/`)
-            } else {
-                next(createError(404, 'user not found'));
-            }
-        })
-        .catch(error => next(error))
-}
-
-
 module.exports.filter = (req, res, next) => {
     const search = req.body.search;
 
