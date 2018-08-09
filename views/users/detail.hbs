@@ -1,7 +1,10 @@
 <div>
-    <div class="row">
+    <div class="row background user-details-container">
         <div class="col col-md-2">
             <img src="{{user.photoPath}}" alt="">
+            <div class="mt-2">
+                 <a href="/users/{{user._id}}/edit" class="btn btn-success">Edit profile</a>
+            </div>
         </div>
         <div class="col col-md-4">
             <h3>{{user.name}} {{user.surname}}</h3>
@@ -13,11 +16,13 @@
 
             <p>{{user.description}}</p>
         </div>
+
         <div class="col col-md-6">
             {{#isOwner user session}}
                 <a href="/users/{{user._id}}/edit" class="btn btn-success">Edit</a>
             {{/isOwner}}
         </div>
+
     </div>
 
 
@@ -28,15 +33,15 @@
       {{/each}}    
     </div>
 
-<div class="row">
-    <div class="col">
-        <h3>Your Questions</h3>
-        {{> questions/list}}
+    <div class="row">
+        <div class="col">
+            <h3>Your Questions</h3>
+            {{> questions/list}}
+        </div>
+        <div class="col">
+            <h3>Your Resources</h3>
+            {{> resources/list}}
+        </div>
     </div>
-    <div class="col">
-        <h3>Your Resources</h3>
-        {{> resources/list}}
-    </div>
-</div>
 
 </div> 

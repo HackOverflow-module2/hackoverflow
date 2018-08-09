@@ -2,8 +2,13 @@ body {
   font: 14px "Lucida Grande", Helvetica, Arial, sans-serif;
 }
 
+
+* {
+  color: rgba(0,0,0,.7);
+}
+
 .body-wrap {
-  padding: 40px;
+   padding: 40px 0;
 
 }
 
@@ -49,6 +54,67 @@ input#like {
   border: 0;
 }
 
+.welcome-container, .user-details-container {
+    padding-top: 25px;
+    height: 320px;
+}
+
+.welcome-container h1 {
+  font-weight: bold;
+  text-transform: uppercase;
+  font-family: 'Montserrat', sans-serif;
+}
+
+
+ h2 {
+    font-weight: semi-bold;
+    font-family: 'Montserrat', sans-serif;
+    margin-bottom: 15px;
+}
+
+.btn {
+  font-family: 'Montserrat', sans-serif;
+}
+
+.background::before {
+  content: "";
+  background-image: url('../images/background.jpg');
+  background-size: 60%;
+  opacity: 0.1;
+  top: 0;
+  left: 0;
+  bottom: 360px;
+  right: 0;
+  position: absolute;
+  z-index: -1;   
+}
+
+.background::after {
+  content: "";
+  height: 2px;
+  background-color:  #5e72e457;
+  top: 420px;
+  left: 0;
+  right: 0;
+  position: absolute;
+}
+
+.create-background::before {
+  bottom: 0;
+}
+
+.create-background::after {
+  height: 0;
+}
+
+.btn-welcome {
+  min-width: 240px;
+}
+
+.posts-container {
+  margin-top: 40px;
+}
+
 .btn-like {
   padding: 0;
   border: 0;
@@ -68,16 +134,28 @@ input#like {
   border-bottom-left-radius: 5px;
   border-bottom-right-radius: 5px;
   height: 250px;
+  background: white;
 }
 
 .editor-toolbar {
   border: 1px solid #cad1d7;
   border-top-left-radius: 5px;
   border-top-right-radius: 5px;
+  background: white;
 }
 
 .editor-toolbar:before, .editor-toolbar:after {
   content: "";
   background:transparent;
   background-color:transparent;
+}
+
+.pagination i {
+  font-size: 18px;
+
+}
+
+.pagination i:first-child {
+  margin-left: 10px;
+  
 }
