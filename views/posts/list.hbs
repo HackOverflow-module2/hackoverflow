@@ -26,10 +26,22 @@
 
 <div class="row posts-container">
     <div class="col">
+        <h4>Order by:</h4>
+        <form action="/order-by-rating" method="get" id="order-rating" class="d-inline-block mb-2">
+            <button type="submit" class="btn-sm btn-default btn order-rating">rating</button>
+        </form>
+        <form action="/" method="get" id="order-rating" class="d-inline-block mb-2">
+            <button type="submit" class="btn-sm btn-default btn order-date">date</button>
+        </form>
+    </div>
+</div>
+
+<div class="row ">
+
+    <div class="col-6">
         <div class="text-right mb-2">
             
-            <span class="btn-sm btn-default btn order-rating">rating &nbsp; <i class="fas fa-sort"></i></span>
-            <span class="btn-sm btn-default btn order-date">date &nbsp;<i class="fas fa-sort"></i></span>
+            
 
         </div>
         <div class="questions-wrap posts-wrap">
@@ -37,11 +49,8 @@
         </div>
     </div>
     
-    <div class="col">
-        <div class="text-right mb-2">
-            <span class="btn-sm btn-default btn order-rating-resource">rating &nbsp;  <i class="fas fa-sort"></i></span>
-            <span class="btn-sm btn-default btn order-date-resource">date &nbsp;<i class="fas fa-sort"></i></span>
-        </div>
+    <div class="col-6">
+        
         <div class="resources-wrap posts-wrap">
         {{> resources/list}}
         </div>

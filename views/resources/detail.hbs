@@ -3,8 +3,8 @@
    <div class="d-flex justify-content-between align-items-center">
       <div >
         {{ resource.title }}
-        <form action="/resources/{{resource.id}}/rating/update" method="post" class="inline-block">
-          <input type="button" id="like" name="like" value="{{resource.rating}}">  
+        <form action="/resources/{{resource.id}}/rating/update" method="post" class="inline-block" id="resources-like-form">
+          <input type="button" id="resources-like" name="like" value="{{resource.rating}}" class="rating-num">  
           <input type="hidden" name="url" value="{{this.url}}">  
           <button type="submit"  class="btn btn-like">       
             <i class="fas fa-heart like"></i>

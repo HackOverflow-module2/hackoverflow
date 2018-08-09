@@ -1,12 +1,12 @@
 $( document ).ready(function() {
     
     // functions to order by date and rating     
-    order(".order-rating",".questions-wrap", arraySortRatingNum);
+/*     order(".order-rating",".questions-wrap", arraySortRatingNum);
     order(".order-date",".questions-wrap", arraySortDate); 
 
     order(".order-rating-resource",".resources-wrap", arraySortRatingNum);
     order(".order-date-resource",".resources-wrap", arraySortDate); 
-
+ */
     // ellipses
 
     $(".ellipses").dotdotdot({
@@ -31,6 +31,8 @@ function order(ratingButton, postsList, sortFunction) {
     });
 }
 
+
+
 //TODO find better way to not repeat this code:
 function arraySortRatingNum(arr) {
 
@@ -54,10 +56,40 @@ function arraySortDate(arr) {
     });
 }
 
+function likes(form, likeVal) {
+    $(document).on("submit", form, function(event) {    
+        event.preventDefault();
+        
+        $.post(this.action, function(data) {
+            $(this).find(likeVal).val(
+                data.newRating
+            )
+        }.bind(this))
+    })
+
+}
+
+likes("#like-form", "#like")
+likes("#resources-like-form", "#resources-like")
+
+/* $(document).on("submit", "#order-rating", function(event) {    
+    event.preventDefault();
+    
+    
+    $.post(this.action, function(data) {
+        $(this).find(likeVal).val(
+            data.newRating
+        ) 
+        
+    }.bind(this))
+})
+ */
+
+
+
 //markdown editor
 var editor = new Editor({
     element: document.getElementById("description")
 });
 
 editor.render();
-
