@@ -54,10 +54,19 @@ function arraySortDate(arr) {
     });
 }
 
+$(document).on("submit", "#like-form", function(event) {    
+    event.preventDefault();
+    
+    $.post(this.action, function(data) {
+        $(this).find("#like").val(
+            data.newRating
+        )
+    }.bind(this))
+})
+
 //markdown editor
 var editor = new Editor({
     element: document.getElementById("description")
 });
 
 editor.render();
-
