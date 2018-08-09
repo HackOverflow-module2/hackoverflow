@@ -1,9 +1,15 @@
-<div>
-    <div class="row background user-details-container">
-        <div class="col col-md-2">
-            <img src="{{user.photoPath}}" alt="">
-            <div class="mt-2">
-                 <a href="/users/{{user._id}}/edit" class="btn btn-success">Edit profile</a>
+<div class="background">
+    <div class="container">
+        <div class="row  user-details-container py-5">
+            
+            <div class="col col-md-2">
+                <img src="{{user.photoPath}}" alt="">
+            </div>
+            <div class="col col-md-8">
+                <h4>{{user.name}} {{user.surname}}</h4>
+                <h5>{{user.nickname}}</h5>
+                <p>{{user.description}}</p>
+                <a href="/users/{{user._id}}/edit" class="btn btn-success">Edit profile</a>
             </div>
         </div>
         <div class="col col-md-4">
@@ -24,8 +30,9 @@
         </div>
 
     </div>
+</div>
 
-
+<div class="container">
 
     <div class="wrap">
       {{#each user.tags}}
