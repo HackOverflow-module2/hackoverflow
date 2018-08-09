@@ -24,7 +24,9 @@
         {{/markdown}}
       </p>
     </blockquote>
-    <p>- {{ resource.user.name }} </p>
+    <a href="/users/{{resource.user.id}}">
+      - {{resource.user.name}}
+    </a>
     {{#each resource.tags}}
         <span class="badge badge-success">{{this}}</span>
     {{/each}}

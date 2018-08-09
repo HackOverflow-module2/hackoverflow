@@ -9,7 +9,7 @@ module.exports.list = (req, res, next) => {
     const limitValue = 3;
     const skipValue = currentPage*limitValue;
     const questionPromise = Question.find().populate('user').sort({createdAt: -1}).skip(skipValue).limit(limitValue);
-    const resourcePromise =  Resource.find().sort({createdAt: -1}).skip(skipValue).limit(limitValue);
+    const resourcePromise =  Resource.find().populate('user').sort({createdAt: -1}).skip(skipValue).limit(limitValue);
 
     Promise.all([questionPromise, resourcePromise])
         .then(([questions, resources]) => {
