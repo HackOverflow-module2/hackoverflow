@@ -11,7 +11,7 @@ const userSchema = new mongoose.Schema({
     },
     surname: {
       type: String,
-      required: 'Surname is required'
+      //required: 'Surname is required'
     },
     nickname: {
       type: String,
@@ -42,6 +42,9 @@ const userSchema = new mongoose.Schema({
     password: {
       type: String,
       required: 'Password is required',
+    },
+    social: {
+      githubId: String
     }
   }, { timestamps: true });
   

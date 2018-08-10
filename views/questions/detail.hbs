@@ -1,39 +1,46 @@
-<div class="card">
-  <div class="card-header">
-    <div class="row">
-      <div class="col col-md-5">
-        {{ question.title }}
-        <form action="/questions/{{question.id}}/rating/update" method="post" class="inline-block">
-          <input type="button" id="like" name="like" value="{{question.rating}}">  
-          <button type="submit"  class="btn btn-like">       
-            <i class="fas fa-heart like"></i>
-          </button> 
-        </form>
-      </div>
-      <div class="col col-md-7">
-        <a href="/questions/{{question.id}}/delete" class="btn btn-danger btn-sm">Delete</a>
+<div class="container mx-auto my-3">
+  <div class="card">
+    <div class="card-header">
+      <div class="d-flex justify-content-between align-items-center">
+        <div class="">
+          {{ question.title }}
+          <form action="/questions/{{question.id}}/rating/update" method="post" class="inline-block" id="like-form">
+            <input type="button" id="like" name="like" value="{{question.rating}}" class="rating-num">
+            <input type="hidden" name="url" value="{{this.url}}">  
+            <button type="submit" class="btn btn-like">       
+              <i class="fas fa-heart like"></i>
+            </button> 
+          </form>
+        </div>
+        <div class="col col-md-7">
+          {{#isAdmin session }}
+            <a href="/questions/{{question.id}}/delete" class="btn btn-danger btn-sm">Delete</a>
+          {{/isAdmin}}
+        </div>
       </div>
     </div>
-  </div>
-  <div class="card-body">
-    <blockquote class="blockquote mb-0">
-      <p>
-        {{#markdown question.description}}
-          {{this}}
-        {{/markdown}}
-      </p>
-    </blockquote>
-    <p>- {{ question.user.name }} </p>
-    {{#each question.tags}}
-        <span class="badge badge-success">{{this}}</span>
+    <div class="card-body">
+      <blockquote class="blockquote mb-0">
+        <p>
+          {{#markdown question.description}}
+            {{this}}
+          {{/markdown}}
+        </p>
+      </blockquote>
+      <a href="/users/{{question.user.id}}">
+        - {{question.user.name}}
+      </a>
+      {{#each question.tags}}
+          <span class="badge badge-success">{{this}}</span>
+      {{/each}}
+    </div>
+
+    {{> answer/create }}
+
+    {{#each answers}}
+
+      {{> answer/list this}}
+
     {{/each}}
   </div>
-
-  {{> answer/create }}
-
-  {{#each answers}}
-
-    {{> answer/list this}}
-
-  {{/each}}
 </div>

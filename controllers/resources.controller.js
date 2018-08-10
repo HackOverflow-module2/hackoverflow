@@ -41,7 +41,9 @@ module.exports.doCreate = (req, res, next) => {
         })
 }
 
+
 module.exports.detail = (req, res, next) => {
+    const url = req.originalUrl;
     const id = req.params.id;
 
     Resource.findById(id)
@@ -49,7 +51,8 @@ module.exports.detail = (req, res, next) => {
         .then(resource => {
             if (resource) {
                 res.render('resources/detail', {
-                    resource
+                    resource,
+                    url
                 });
             } else {
                 next(createError(404, `Resource with id ${id} not found`));
@@ -79,7 +82,7 @@ module.exports.doUpdate = (req, res, next) => {
     Resource.findByIdAndUpdate(id, { $inc: {rating: 1} })
         .then(result => {
             if(result) {
-                res.redirect(`/resources/${id}`)
+                res.json({ newRating: result.rating + 1 })
             } else {
                 next(createError(404, 'resource not found'));
             }

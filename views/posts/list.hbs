@@ -1,49 +1,72 @@
-<div>
-    <h1 class="text-center">
-        Welcome to Hackoverflow!
-    </h1>
-    <div class="wrap">
-        <div class="row justify-content-center">
-            <div class="col text-center">
-                <h2>
-                    Questions
-                </h2>
-                <a class="btn btn-success" href="/questions/create">
-                    Ask a question
-                </a>
-            </div>
-            <div class="col text-center">
-                <h2>
-                    Resources
-                </h2>
-                <a class="btn btn-success" href="/resources/create">
-                    Share something useful
-                </a>
+<div class="welcome-container background">
+    <div class="container my-5">
+        <h1 class="text-center">
+            Welcome to <br>Hackoverflow!
+        </h1>
+        <div class="wrap">
+            <div class="row justify-content-center">
+                <div class="col text-center">
+                    <h2>
+                        Questions
+                    </h2>
+                    <a class="btn btn-success btn-welcome" href="/questions/create">
+                        Ask a question
+                    </a>
+                </div>
+                <div class="col text-center">
+                    <h2>
+                        Resources
+                    </h2>
+                    <a class="btn btn-success btn-welcome" href="/resources/create">
+                        Share something useful
+                    </a>
+                </div>
             </div>
         </div>
     </div>
 </div>
 
-<div class="row">
-    <div class="col">
-        <div class="text-right mb-2">
+<div class="container">
+
+    <div class="row posts-container">
+        <div class="col">
+            <h4>Order by:</h4>
+            <form action="/order-by-rating" method="get" id="order-rating" class="d-inline-block mb-2">
+                <button type="submit" class="btn-sm btn-default btn order-rating">rating</button>
+            </form>
+            <form action="/" method="get" id="order-rating" class="d-inline-block mb-2">
+                <button type="submit" class="btn-sm btn-default btn order-date">date</button>
+            </form>
+        </div>
+    </div>
+
+    <div class="row">
+
+        <div class="col-6">
+            <div class="text-right mb-2">
+                
+                
+
+            </div>
+            <div class="questions-wrap posts-wrap">
+                {{> questions/list}}
+            </div>
+        </div>
+        
+        <div class="col-6">
             
-            <span class="btn-sm btn-default btn order-rating">rating &nbsp; <i class="fas fa-sort"></i></span>
-            <span class="btn-sm btn-default btn order-date">date &nbsp;<i class="fas fa-sort"></i></span>
-
-        </div>
-        <div class="questions-wrap posts-wrap">
-            {{> questions/list}}
+            <div class="resources-wrap posts-wrap">
+            {{> resources/list}}
+            </div>
         </div>
     </div>
-    
-    <div class="col">
-        <div class="text-right mb-2">
-            <span class="btn-sm btn-default btn order-rating-resource">rating &nbsp;  <i class="fas fa-sort"></i></span>
-            <span class="btn-sm btn-default btn order-date-resource">date &nbsp;<i class="fas fa-sort"></i></span>
-        </div>
-        <div class="resources-wrap posts-wrap">
-        {{> resources/list}}
+    <div class="d-flex justify-content-end">
+        <div class="pagination">
+            <a href="/?page={{prevPage}}"><i class="fas fa-chevron-left"></i></a>
+            <a href="/?page={{nextPage}}"><i class="fas fa-chevron-right"></i></a>
+            <input type="hidden" id="pagination" value="0" name="pagination">
         </div>
     </div>
 </div>
+
+
