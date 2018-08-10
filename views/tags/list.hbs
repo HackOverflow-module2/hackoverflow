@@ -3,7 +3,9 @@
         {{#each tags}}
         <div class="col col-4">
             <div class="card mb-3" style="width: 18rem;">
-            <img class="card-img-top" src="{{this.logo}}" alt="Logo">
+            <div  class="card-header">
+                <img class="card-img" src="{{this.logo}}" alt="Logo">
+            </div>
                 <div class="card-body">
                     <h5 class="card-title">{{this.name}}</h5>
                     <p class="card-text ellipses tag-description" id="ellipses">{{this.description}}</p>

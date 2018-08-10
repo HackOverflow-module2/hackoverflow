@@ -27,7 +27,7 @@ logo: 'https://seeklogo.com/images/B/bootstrap-logo-69A1CCC10B-seeklogo.com.png'
 {
 name: 'Ajax',
 description: 'Lorem Rajoy Ipsum por las carreteras tienen que ir coches y de los aeropuertos tienen que salir aviones mucho españoles ¿eh? no es cosa menor, dicho de otra manera, es cosa mayor A veces moverse es bueno, otras veces no y',
-log:'https://upload.wikimedia.org/wikipedia/commons/thumb/a/a1/AJAX_logo_by_gengns.svg/2000px-AJAX_logo_by_gengns.svg.png'
+logo:'https://upload.wikimedia.org/wikipedia/commons/thumb/a/a1/AJAX_logo_by_gengns.svg/2000px-AJAX_logo_by_gengns.svg.png'
 },
 {
 name: 'Angular',
@@ -37,7 +37,7 @@ logo: 'https://seeklogo.com/images/A/angular-icon-logo-9946B9795D-seeklogo.com.p
 {
 name: 'Jquery',
 description: 'Lorem Rajoy Ipsum por las carreteras tienen que ir coches y de los aeropuertos tienen que salir aviones mucho españoles ¿eh? no es cosa menor, dicho de otra manera, es cosa mayor A veces moverse es bueno, otras veces no y',
-log:'https://www.northware.mx/wp-content/uploads/2013/11/jquerylogo-jpg.png'
+logo:'https://www.northware.mx/wp-content/uploads/2013/11/jquerylogo-jpg.png'
 },
 {
 name: 'HTML',
