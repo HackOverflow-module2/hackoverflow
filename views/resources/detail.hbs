@@ -31,4 +31,19 @@
       {{/each}}
     </div>
   </div>
+  <div class="card-body">
+    <blockquote class="blockquote mb-0">
+      <p>
+        {{#markdown resource.description}}
+          {{this}}
+        {{/markdown}}
+      </p>
+    </blockquote>
+    <a href="/users/{{resource.user.id}}">
+      - {{resource.user.name}}
+    </a>
+    {{#each resource.tags}}
+        <span class="badge badge-success">{{this}}</span>
+    {{/each}}
+  </div>
 </div>

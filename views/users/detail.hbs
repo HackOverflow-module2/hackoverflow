@@ -12,6 +12,23 @@
                 <a href="/users/{{user._id}}/edit" class="btn btn-success">Edit profile</a>
             </div>
         </div>
+        <div class="col col-md-4">
+            <h3>{{user.name}} {{user.surname}}</h3>
+            <h5>{{user.nickname}}</h5>
+
+            {{#isAdmin user }}
+                <p class = "text-warning"><i class="fas fa-star"></i>Teacher</p>
+            {{/isAdmin}}
+
+            <p>{{user.description}}</p>
+        </div>
+
+        <div class="col col-md-6">
+            {{#isOwner user session}}
+                <a href="/users/{{user._id}}/edit" class="btn btn-success">Edit</a>
+            {{/isOwner}}
+        </div>
+
     </div>
 </div>
 
