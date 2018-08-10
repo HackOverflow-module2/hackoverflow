@@ -1,19 +1,38 @@
-<div>
-    <div class="row background user-details-container">
-        <div class="col col-md-2">
-            <img src="{{user.photoPath}}" alt="">
-            <div class="mt-2">
-                 <a href="/users/{{user._id}}/edit" class="btn btn-success">Edit profile</a>
+<div class="background">
+    <div class="container">
+        <div class="row  user-details-container py-5">
+            
+            <div class="col col-md-2">
+                <img src="{{user.photoPath}}" alt="">
+            </div>
+            <div class="col col-md-8">
+                <h4>{{user.name}} {{user.surname}}</h4>
+                <h5>{{user.nickname}}</h5>
+                <p>{{user.description}}</p>
+                <a href="/users/{{user._id}}/edit" class="btn btn-success">Edit profile</a>
             </div>
         </div>
         <div class="col col-md-4">
             <h3>{{user.name}} {{user.surname}}</h3>
             <h5>{{user.nickname}}</h5>
+
+            {{#isAdmin user }}
+                <p class = "text-warning"><i class="fas fa-star"></i>Teacher</p>
+            {{/isAdmin}}
+
             <p>{{user.description}}</p>
         </div>
+
+        <div class="col col-md-6">
+            {{#isOwner user session}}
+                <a href="/users/{{user._id}}/edit" class="btn btn-success">Edit</a>
+            {{/isOwner}}
+        </div>
+
     </div>
+</div>
 
-
+<div class="container">
 
     <div class="wrap">
       {{#each user.tags}}
@@ -21,15 +40,15 @@
       {{/each}}    
     </div>
 
-<div class="row">
-    <div class="col">
-        <h3>Your Questions</h3>
-        {{> questions/list}}
+    <div class="row">
+        <div class="col">
+            <h3>Your Questions</h3>
+            {{> questions/list}}
+        </div>
+        <div class="col">
+            <h3>Your Resources</h3>
+            {{> resources/list}}
+        </div>
     </div>
-    <div class="col">
-        <h3>Your Resources</h3>
-        {{> resources/list}}
-    </div>
-</div>
 
 </div> 

@@ -1,4 +1,6 @@
 var markdown = require( "markdown" ).markdown;
+const constants = require('../constants');
+
 
 module.exports = (hbs) => {
 /*     hbs.registerHelper('eachByRating', function (arr, options) {
@@ -35,4 +37,22 @@ module.exports = (hbs) => {
         
     })
 
+    hbs.registerHelper('isAdmin', (user, options) => {
+        if (user.role === constants.ROLE_ADMIN) {
+            return options.fn(this);
+        } else {
+            return options.inverse(this);
+        }
+    })
+
+    hbs.registerHelper('isOwner', (user, userSession, options) => {
+        if (user.id === userSession.id) {
+            console.log('El this --> ', this)
+            return options.fn(this);
+        } else {
+            return options.inverse(this);
+        }
+    })
+
 }
+

@@ -23,7 +23,9 @@
         {{this}}
       {{/markdown}}
       </h5>
-      <p class="card-text">{{this.user.name}}</p>
+      <a href="/users/{{this.user.id}}">
+        - {{this.user.name}}
+      </a>
       <div class="mb-3">
         {{#each this.tags}}
           <span class="badge badge-success">{{this}}</span>
