@@ -20,6 +20,9 @@ const postSchema = new mongoose.Schema({
     rating: {
         type: Number,
         default: 0
+    },
+    sentiment: {
+        type: Number
     }
 }, { timestamps: true, discriminatorKey: 'kind' });
 

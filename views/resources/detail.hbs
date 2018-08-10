@@ -13,7 +13,9 @@
           </form>
         </div>
         <div>
-          <a href="/resources/{{resource.id}}/delete" class="btn btn-danger btn-sm">Delete</a>
+          {{#isAdmin session }}
+            <a href="/resources/{{resource.id}}/delete" class="btn btn-danger btn-sm">Delete</a>
+          {{/isAdmin}}
         </div>
       </div>
     </div>
