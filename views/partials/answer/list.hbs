@@ -9,6 +9,29 @@
         </p>
         </blockquote>
         <p>- {{user.name}} </p>
+        
+        <div class="photoSentiment">
+            {{#angelicSentiment sentiment}}
+                <img src="../images/angelicSentiment.png" alt="angelicSentiment">
+            {{/angelicSentiment}}
+
+            {{#positiveSentiment sentiment}}
+                <img src="../images/positiveSentiment.png" alt="positiveSentiment">
+            {{/positiveSentiment}}
+
+            {{#neutralSentiment sentiment}}
+                <img src="../images/neutralSentiment.jpg" alt="neutralSentiment">
+            {{/neutralSentiment}}
+
+            {{#badSentiment sentiment}}
+                <img src="../images/badSentiment.png" alt="badSentiment">
+            {{/badSentiment}}
+
+            {{#haterSentiment sentiment}}
+                <img src="../images/haterSentiment.png" alt="haterSentiment">
+            {{/haterSentiment}}
+
+        </div>
     </div>
 
     </div>

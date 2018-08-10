@@ -1,4 +1,6 @@
 var markdown = require( "markdown" ).markdown;
+const constants = require('../constants');
+
 
 module.exports = (hbs) => {
 /*     hbs.registerHelper('eachByRating', function (arr, options) {
@@ -22,17 +24,75 @@ module.exports = (hbs) => {
         
     })
 
-    hbs.registerHelper('dateTime', function (date) {
+    hbs.registerHelper('dateTime', function(date) {
         dateTime = Date.parse(date);
         return dateTime
         
     })
 
-    hbs.registerHelper('markdown', function (text) {
+    hbs.registerHelper('markdown', function(text) {
         md_content = text
         html_content = markdown.toHTML( md_content );
         return html_content
         
     })
 
+    hbs.registerHelper('isAdmin', function(user, options){
+        if (user.role === constants.ROLE_ADMIN) {
+            return options.fn(this);
+        } else {
+            return options.inverse(this);
+        }
+    })
+
+    hbs.registerHelper('isOwner', function(user, userSession, options) {
+        if (user.id === userSession.id) {
+            console.log('El this --> ', this)
+            return options.fn(this);
+        } else {
+            return options.inverse(this);
+        }
+    })
+
+    hbs.registerHelper('angelicSentiment', function(sentiment, options) {
+        if (sentiment >= 4) {
+            return options.fn(this);
+        } else {
+            return options.inverse(this);
+        }
+    })
+
+    hbs.registerHelper('positiveSentiment', function(sentiment, options) {
+        if (sentiment > 0 && sentiment < 4) {
+            return options.fn(this);
+        } else {
+            return options.inverse(this);
+        }
+    })
+
+    hbs.registerHelper('neutralSentiment', function(sentiment, options) {
+        if (sentiment === 0) {
+            return options.fn(this);
+        } else {
+            return options.inverse(this);
+        }
+    })
+
+    hbs.registerHelper('badSentiment', function(sentiment, options) {
+        if (sentiment < 0 && sentiment > -4) {
+            return options.fn(this);
+        } else {
+            return options.inverse(this);
+        }
+    })
+
+    hbs.registerHelper('haterSentiment', function(sentiment, options) {
+        if (sentiment <= -4) {
+            return options.fn(this);
+        } else {
+            return options.inverse(this);
+        }
+    })
+
 }
+

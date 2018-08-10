@@ -7,9 +7,14 @@
             </div>
             <div class="col col-md-8">
                 <h4>{{user.name}} {{user.surname}}</h4>
+                {{#isAdmin user }}
+                <p class = "text-warning"><i class="fas fa-star"></i>Teacher</p>
+                {{/isAdmin}}
                 <h5>{{user.nickname}}</h5>
                 <p>{{user.description}}</p>
-                <a href="/users/{{user._id}}/edit" class="btn btn-success">Edit profile</a>
+                {{#isOwner user session}}
+                    <a href="/users/{{user._id}}/edit" class="btn btn-success">Edit profile</a>
+                {{/isOwner}}
             </div>
         </div>
     </div>
