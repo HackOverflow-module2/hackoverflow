@@ -37,7 +37,7 @@ module.exports = (hbs) => {
         
     })
 
-    hbs.registerHelper('isAdmin', (user, options) => {
+    hbs.registerHelper('isAdmin', function(user, options){
         if (user.role === constants.ROLE_ADMIN) {
             return options.fn(this);
         } else {
@@ -45,7 +45,7 @@ module.exports = (hbs) => {
         }
     })
 
-    hbs.registerHelper('isOwner', (user, userSession, options) => {
+    hbs.registerHelper('isOwner', function(user, userSession, options) {
         if (user.id === userSession.id) {
             console.log('El this --> ', this)
             return options.fn(this);
