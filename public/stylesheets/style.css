@@ -4,7 +4,7 @@ body {
 
 
 * {
-  color: rgba(0,0,0,.7);
+  /* color: rgba(0,0,0,.7); */
 }
 
 .body-wrap {
@@ -27,6 +27,19 @@ a {
 
 .inner-wrap {
   margin: 15px;
+}
+
+.secondary-color {
+  color: #5e72e4;
+}
+
+.role {
+  font-size: 12px;
+}
+
+.fa-star {
+  color: #FBC338;
+  font-size: 14px;
 }
 
 img {
@@ -135,6 +148,8 @@ h1, h4 {
   padding: 0;
   border: 0;
   background: transparent;
+  color: #5e72e4;
+  font-size: 18px;
 }
 .inline-block {
   display: inline-block;

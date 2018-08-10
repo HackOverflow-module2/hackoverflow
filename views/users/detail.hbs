@@ -6,10 +6,13 @@
                 <img src="{{user.photoPath}}" alt="">
             </div>
             <div class="col col-md-8">
-                <h4>{{user.name}} {{user.surname}}</h4>
-                {{#isAdmin user }}
-                <p class = "text-warning"><i class="fas fa-star"></i>Teacher</p>
-                {{/isAdmin}}
+                <div class="d-flex align-items-center">   
+                    <h4 class="m-0">{{user.name}} {{user.surname}}</h4>
+                    {{#isAdmin user }}
+                    <p class="badge badge-success mx-2 role m-0 role"><i class="fas fa-star"></i>&nbsp;Teacher</p>
+                    {{/isAdmin}}
+                </div>
+             
                 <h5>{{user.nickname}}</h5>
                 <p>{{user.description}}</p>
                 {{#isOwner user session}}
