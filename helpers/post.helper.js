@@ -54,5 +54,45 @@ module.exports = (hbs) => {
         }
     })
 
+    hbs.registerHelper('angelicSentiment', function(sentiment, options) {
+        if (sentiment >= 4) {
+            return options.fn(this);
+        } else {
+            return options.inverse(this);
+        }
+    })
+
+    hbs.registerHelper('positiveSentiment', function(sentiment, options) {
+        if (sentiment > 0 && sentiment < 4) {
+            return options.fn(this);
+        } else {
+            return options.inverse(this);
+        }
+    })
+
+    hbs.registerHelper('neutralSentiment', function(sentiment, options) {
+        if (sentiment === 0) {
+            return options.fn(this);
+        } else {
+            return options.inverse(this);
+        }
+    })
+
+    hbs.registerHelper('badSentiment', function(sentiment, options) {
+        if (sentiment < 0 && sentiment > -4) {
+            return options.fn(this);
+        } else {
+            return options.inverse(this);
+        }
+    })
+
+    hbs.registerHelper('haterSentiment', function(sentiment, options) {
+        if (sentiment <= -4) {
+            return options.fn(this);
+        } else {
+            return options.inverse(this);
+        }
+    })
+
 }
 
