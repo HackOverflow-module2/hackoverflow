@@ -5,7 +5,9 @@
   "scripts": {
     "dev": "DEBUG=ex-social-auth:* nodemon -e hbs,js ./bin/www",
     "start": "node ./bin/www",
-    "seeds": "node ./bin/seeds"
+    "seeds": "node ./bin/seeds",
+    "postsseeds": "node ./bin/posts-seeds"
+
   },
   "dependencies": {
     "ajax": "0.0.4",

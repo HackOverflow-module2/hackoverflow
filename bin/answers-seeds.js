@@ -1,13 +1,13 @@
 
 const mongoose = require('mongoose');
-const Tag = require('../models/tag.model');
-const tags = require('../data/tags.data')
+const Answer = require('../models/answer.model');
+const answers = require('../data/answers.data');
 
 require('../configs/db.config');
 
-Tag.insertMany(tags)
-    .then(tags => {
-        console.log(`Seeded ${tags.length} tags`)
+Answer.insertMany(answers)
+    .then(results => {
+        console.log(`Seeded ${results.length} answers`)
         mongoose.connection.close();
     })
     .catch(error => {

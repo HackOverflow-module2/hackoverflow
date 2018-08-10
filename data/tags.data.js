@@ -1,7 +1,7 @@
 module.exports = [
     {
         name: 'JavaScript',
-        description: 'Worst programming language ever'
+        description: 'Worst programming language ever??s'
     },
     {
         name: 'Node',
