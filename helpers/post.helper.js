@@ -22,13 +22,13 @@ module.exports = (hbs) => {
         
     })
 
-    hbs.registerHelper('dateTime', function (date) {
+    hbs.registerHelper('dateTime', function(date) {
         dateTime = Date.parse(date);
         return dateTime
         
     })
 
-    hbs.registerHelper('markdown', function (text) {
+    hbs.registerHelper('markdown', function(text) {
         md_content = text
         html_content = markdown.toHTML( md_content );
         return html_content
