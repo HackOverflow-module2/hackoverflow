@@ -1,7 +1,7 @@
 <div class="container mx-auto my-3">
   <div class="card">
     <div class="card-header">
-    <div class="d-flex justify-content-between align-items-center">
+      <div class="d-flex justify-content-between align-items-center">
         <div >
           {{ resource.title }}
           <form action="/resources/{{resource.id}}/rating/update" method="post" class="inline-block" id="resources-like-form">
@@ -27,25 +27,12 @@
           {{/markdown}}
         </p>
       </blockquote>
-      <p>- {{ resource.user.name }} </p>
+      <a href="/users/{{resource.user.id}}">
+        - {{resource.user.name}}
+      </a>
       {{#each resource.tags}}
           <span class="badge badge-success">{{this}}</span>
       {{/each}}
     </div>
-  </div>
-  <div class="card-body">
-    <blockquote class="blockquote mb-0">
-      <p>
-        {{#markdown resource.description}}
-          {{this}}
-        {{/markdown}}
-      </p>
-    </blockquote>
-    <a href="/users/{{resource.user.id}}">
-      - {{resource.user.name}}
-    </a>
-    {{#each resource.tags}}
-        <span class="badge badge-success">{{this}}</span>
-    {{/each}}
   </div>
 </div>
