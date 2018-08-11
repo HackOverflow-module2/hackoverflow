@@ -11,6 +11,9 @@ const tagSchema = new mongoose.Schema({
         type: String,
         required: true
     },
+    logo: {
+        type: String
+    },
     question: [{
         type: mongoose.Schema.Types.ObjectId,
         ref: 'Question',

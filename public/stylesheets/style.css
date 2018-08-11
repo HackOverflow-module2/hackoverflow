@@ -159,6 +159,16 @@ h1, h4 {
   height: 55px;
 }
 
+.card-img {
+  height: 40px;
+  margin: 20px auto;
+  display: block;
+  max-width: inherit;
+  width: auto;
+  -webkit-filter: grayscale(0.5);
+  filter: grayscale(0.5);
+}
+
 /* change markdown editor styles */
 .CodeMirror {
   border: 1px solid #cad1d7;
