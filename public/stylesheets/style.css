@@ -51,6 +51,10 @@ a {
 
 }
 
+.card-header {
+  font-size: 18px;
+}
+
 .btn-sm {
   padding: 8px;
 }
