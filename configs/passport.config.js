@@ -2,8 +2,7 @@ const User = require('../models/user.model');
 const LocalStrategy = require('passport-local').Strategy;
 const GitHubStrategy = require('passport-github').Strategy;
 
-require('dotenv');
-
+require('dotenv')
 
 module.exports.setup = (passport) => {
 
@@ -43,9 +42,9 @@ module.exports.setup = (passport) => {
 
 
   passport.use('github-auth', new GitHubStrategy({
-    clientID: '6f984e8f9ad9f8dcd50b',
-    clientSecret: '6d5f547818d4437cea03626b195c28c45a120a7a',
-    callbackURL: 'http://localhost:3000/sessions/github/cb',
+    clientID: process.env.GITHUB_CLIENT_ID,
+    clientSecret: process.env.GITHUB_CLIENT_SECRET,
+    callbackURL: process.env.GITHUB_AUTH_CB,
     scope: 'user:email'
     }, authenticateOAuthUser));
 
